@@ -1,0 +1,78 @@
+# AstraOS GRUB Theme
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Minimal dark theme with magenta accent — matches AstraOS visual identity
+# (magenta star logo + deep space background + soft slate text).
+#
+# Asset dependencies (installed at install time, NOT in the live ISO):
+#   - background.png   → default-violet AstraOS wallpaper scaled for boot menu
+#   - highlight_c.png   → magenta highlight left edge
+#   - highlight_e.png   → magenta highlight right edge
+#   - highlight_w.png   → magenta highlight left cap
+#   - highlight_n.png   → magenta highlight top edge
+#   - highlight_s.png   → magenta highlight bottom edge
+#   - highlight_ne.png  → magenta highlight top-right corner
+#   - highlight_nw.png  → magenta highlight top-left corner
+#   - highlight_se.png  → magenta highlight bottom-right corner
+#   - highlight_sw.png  → magenta highlight bottom-left corner
+#   - slider_c.png      → vertical slider center (scrollbar)
+#   - slider_n.png      → vertical slider top
+#   - slider_s.png      → vertical slider bottom
+#   - DejaVu Sans Bold 24 / DejaVu Sans 16 / DejaVu Sans 12 (already shipped by GRUB)
+
+desktop-image: "background.png"
+desktop-color: "#0b0d17"
+title-text: "AstraOS Boot Manager"
+title-color: "#E040FB"
+title-font: "DejaVu Sans Bold 24"
+title-align: "center"
+
++ boot_menu {
+    left = 25%
+    top = 30%
+    width = 50%
+    height = 40%
+    item_color = "#f1f5f9"
+    selected_item_color = "#0b0d17"
+    selected_item_pixmap_style = "highlight_*.png"
+    item_height = 32
+    item_spacing = 8
+    item_font = "DejaVu Sans 16"
+    selected_item_font = "DejaVu Sans Bold 16"
+    scrollbar = true
+    scrollbar_width = 8
+    scrollbar_thumb = "slider_*.png"
+    scrollbar_frame = "slider_*.png"
+    menu_pixmap_style = "menu_*.png"
+}
+
++ label {
+    text = "Use ↑↓ to select, Enter to boot"
+    color = "#94a3b8"
+    font = "DejaVu Sans 12"
+    left = 35%
+    top = 80%
+}
+
++ label {
+    text = "AstraOS v0.1 — Astra Corporation"
+    color = "#475569"
+    font = "DejaVu Sans 10"
+    align = "center"
+    left = 0
+    top = 95%
+    width = 100%
+}
+
++ progress_bar {
+    id = "__timeout__"
+    text = "Booting in %d s"
+    color = "#94a3b8"
+    left = 35%
+    top = 84%
+    width = 30%
+    height = 16
+    font = "DejaVu Sans 12"
+    bar_style = "highlight_*.png"
+    text_color = "#E040FB"
+}
