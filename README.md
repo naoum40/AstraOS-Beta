@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="astraos-iso1/assets/logos/logo-astraos.png" width="180">
+<img src="astraos-iso1/assets/logos/logo-boot.png" width="180">
 
 # ✦ AstraOS
 
