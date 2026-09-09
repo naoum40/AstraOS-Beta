@@ -347,6 +347,23 @@ Voir [`docs/ROADMAP.md`](docs/ROADMAP.md) pour les détails.
 - Wallpaper bleu : `assets/wallpapers/default-bleu.png`
 - Wallpaper classique : `assets/wallpapers/classic.png`
 
+## ⚠️ Utilisation des logos
+
+Les logos, icônes et éléments graphiques présents dans ce projet sont protégés et restent la propriété de leurs auteurs ou détenteurs respectifs.
+
+**Toute utilisation des logos à des fins commerciales ou lucratives est interdite sans autorisation préalable.**
+
+Il est également interdit de :
+
+* vendre ou revendre les logos ;
+* intégrer les logos dans un produit ou service commercial sans autorisation ;
+* modifier les logos dans le but de les exploiter commercialement ;
+* utiliser les logos pour donner l’impression d’une affiliation ou d’un partenariat officiel.
+
+L’utilisation à titre personnel, non commercial et à des fins de présentation du projet est autorisée
+
+Pour toute utilisation commerciale, veuillez demander une autorisation préalable au propriétaire des logos.
+
 ---
 
 ## 🤝 Philosophie du projet
@@ -361,10 +378,6 @@ Astra Sync     = UI AstraOS + Drive/Dropbox/Nextcloud (backends existants)
 Astra Gaming   = UI AstraOS + Steam/Epic/Ubisoft (backends existants)
 Astra Bridge   = UI AstraOS + Wine/Proton/DXVK (backends existants)
 ```
-
-### Boycott Tencent
-
-AstraOS ne supporte pas officiellement les jeux Tencent avec anti-cheat kernel (Valorant, etc.). LoL (Riot mais sans anti-cheat kernel) fonctionne nativement, on ne le bloque pas mais on ne le promeut pas.
 
 ### Open source et transparence
 
@@ -394,9 +407,9 @@ of this software and associated documentation files...
 
 **AstraOS Project** — *Astra Corporation by (mmtstudio)*
 
-- **Concept & Direction** : Naoum (@naoum40)
-- **Développement & Architecture** : Z.ai Code Assistant
-- **Base technique** : Arch Linux, Hyprland, GTK4, Rust
+- **Concept & Direction** : naou_m (@naoum40)
+- **Développer** : naou_m et GLM 5.2 (Assistant)
+- **Base technique** : Arch Linux
 - **Logo & branding** : MMT Studio
 
 ---
@@ -414,9 +427,7 @@ of this software and associated documentation files...
 
 <div align="center">
 
-### ✦ AstraOS — *Le futur de l'OS Linux*
-
-**Performance · Élégance · Indépendance**
+### ✦ AstraOS *
 
 *Made with 🧡 by Astra Corporation (mmtstudio)*
 
