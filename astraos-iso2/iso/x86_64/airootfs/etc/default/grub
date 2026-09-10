@@ -1,0 +1,72 @@
+# /etc/default/grub — AstraOS defaults
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# This file is NOT used by the live ISO (which uses syslinux/systemd-boot),
+# but it is installed inside the airootfs so that when a user installs AstraOS
+# to disk via Calamares, the resulting GRUB install picks up AstraOS branding
+# (distributor name, default background, theme, cryptodisk, etc.).
+#
+# Generated for AstraOS ISO 1 (v0.1). Edit `grub-mkconfig -o /boot/grub/grub.cfg`
+# after any change to this file.
+
+# ---------------------------------------------------------------------------
+# Boot menu behavior
+# ---------------------------------------------------------------------------
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_TIMEOUT_STYLE=menu
+GRUB_DISTRIBUTOR="AstraOS"
+
+# ---------------------------------------------------------------------------
+# Kernel command line
+# ---------------------------------------------------------------------------
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
+GRUB_CMDLINE_LINUX=""
+
+# ---------------------------------------------------------------------------
+# Disk encryption (LUKS) — enabled so users can adopt full-disk crypto
+# in a future ISO without having to re-edit grub.
+# ---------------------------------------------------------------------------
+GRUB_ENABLE_CRYPTODISK=y
+
+# ---------------------------------------------------------------------------
+# Preload fonts and terminal setup
+# ---------------------------------------------------------------------------
+GRUB_PRELOAD_MODULES="part_gpt part_msdos lvm luks ext2 btrfs xfs zfs"
+GRUB_TERMINAL_INPUT="console"
+GRUB_TERMINAL_OUTPUT="gfxterm"
+
+# ---------------------------------------------------------------------------
+# Graphics — let GRUB auto-detect the best mode
+# ---------------------------------------------------------------------------
+GRUB_GFXMODE=auto
+GRUB_GFXPAYLOAD_LINUX=keep
+
+# ---------------------------------------------------------------------------
+# AstraOS branding assets (installed by customize script / post-install hook)
+# ---------------------------------------------------------------------------
+GRUB_BACKGROUND="/usr/share/backgrounds/astraos/default-violet.png"
+GRUB_THEME="/boot/grub/themes/astraos/theme.txt"
+GRUB_FONT="/boot/grub/fonts/unicode.pf2"
+
+# ---------------------------------------------------------------------------
+# Boot menu cosmetics (only used if GRUB_THEME is not set)
+# ---------------------------------------------------------------------------
+GRUB_COLOR_NORMAL="light-black/black"
+GRUB_COLOR_HIGHLIGHT="magenta/light-gray"
+
+# ---------------------------------------------------------------------------
+# Disable submenu nesting (flat menu = friendlier for general public)
+# ---------------------------------------------------------------------------
+GRUB_DISABLE_SUBMENU=y
+
+# ---------------------------------------------------------------------------
+# Disable recovery entry (not relevant for a freshly-installed AstraOS)
+# ---------------------------------------------------------------------------
+GRUB_DISABLE_RECOVERY=true
+
+# ---------------------------------------------------------------------------
+# OS prober — disabled by default for security/predictability.
+# Users who dual-boot can re-enable with `GRUB_DISABLE_OS_PROBER=false`.
+# ---------------------------------------------------------------------------
+GRUB_DISABLE_OS_PROBER=true
