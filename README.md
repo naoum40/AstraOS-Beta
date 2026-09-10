@@ -9,7 +9,7 @@
 <br>
 
 ![Status](https://img.shields.io/badge/Status-Work_in_Progress-818cf8?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-0.1.0-8b5cf6?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.2.0-8b5cf6?style=for-the-badge)
 ![Base](https://img.shields.io/badge/Base-Arch_Linux-1793d1?style=for-the-badge)
 ![License](https://img.shields.io/badge/Code-MIT-blue?style=for-the-badge)
 
@@ -98,8 +98,8 @@ Plusieurs éditions sont prévues :
 | ISO       | Version | Contenu                            | État                |
 | --------- | ------: | ---------------------------------- | ------------------- |
 | **ISO 1** |     0.1 | Arch Linux + Hyprland + branding   | ✅ Disponible        |
-| ISO 2     |     0.2 | Astra Shell + Welcome Screen       | 🔜 En développement |
-| ISO 3     |     0.3 | Applications système               | ⏳ Prévu             |
+| ISO 2     |     0.2 | Astra Shell + Welcome Screen       | ✅ Disponible        |
+| ISO 3     |     0.3 | Applications système               | 🔜 En développement  |
 | ISO 4     |     0.4 | AstraPass + Widgets + Jeux         | ⏳ Prévu             |
 | ISO 5     |     0.5 | Astra Defender + Task Manager      | ⏳ Prévu             |
 | ISO 6     |     0.6 | Astra Assistant + outils système   | ⏳ Prévu             |
