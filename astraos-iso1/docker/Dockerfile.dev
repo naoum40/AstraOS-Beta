@@ -1,19 +1,15 @@
 # syntax=docker/dockerfile:1.6
 # ╔══════════════════════════════════════════════════════════════════════╗
-# ║              AstraOS — DevContainer Dockerfile                         ║
-# ║           Rust + GTK4-rs toolchain for Astra Shell dev                 ║
-# ║            © 2026 AstraOS Project — Astra Corporation                  ║
+# ║              AstraOS — DevContainer Dockerfile                       ║
+# ║           Rust + GTK4-rs toolchain for Astra Shell dev               ║
+# ║            © 2026 AstraOS Project — Astra Corporation                ║
 # ╚══════════════════════════════════════════════════════════════════════╝
-#
-# Used from ISO 2 onwards to compile Astra Shell + apps in Rust + GTK4-rs.
-# Default user: astra (password: astra) — wheel NOPASSWD via sudoers.
 
 FROM archlinux:latest
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8
 
-# ── Base system + Rust + GTK4 + dev tools ────────────────────────────────
 RUN pacman -Syu --noconfirm --needed \
         base-devel \
         rust \
@@ -43,7 +39,6 @@ RUN pacman -Syu --noconfirm --needed \
         sudo \
     && rm -rf /var/cache/pacman/pkg/*
 
-# ── Default user: astra ─────────────────────────────────────────────────
 RUN useradd -m -G wheel,docker -s /bin/bash astra \
     && echo "astra:astra" | chpasswd \
     && echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
@@ -51,17 +46,11 @@ RUN useradd -m -G wheel,docker -s /bin/bash astra \
 USER astra
 WORKDIR /home/astra
 
-# Rust env (already installed via pacman, just make sure PATH is correct)
 ENV PATH="/home/astra/.cargo/bin:${PATH}"
 
-# ── paru (AUR helper, Rust) ────────────────────────────────────────────
 RUN git clone --depth=1 https://aur.archlinux.org/paru.git /tmp/paru \
     && cd /tmp/paru \
     && makepkg -si --noconfirm \
     && rm -rf /tmp/paru
-
-# ── Copy dotfiles skeleton into /home/astra (same as ISO airootfs skel) ─
-# Done at runtime via volume mount (see Makefile `dev` target), so that
-# changes to skel files are picked up without rebuilding the image.
 
 CMD ["bash"]

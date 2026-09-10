@@ -1,6 +1,3 @@
-# greetd configuration for AstraOS ISO 2
-# Launches Astra Shell (if available) or falls back to Hyprland
-
 [terminal]
 vt = 1
 switch = true

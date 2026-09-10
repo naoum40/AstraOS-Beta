@@ -8,7 +8,6 @@ import sys
 
 ASTRA_ROOT = "/home/z/my-project/astraos"
 
-# Liste des fichiers texte à inclure (relatifs à ASTRA_ROOT)
 TEXT_FILES = [
     ".devcontainer/devcontainer.json",
     ".gitignore",
@@ -63,14 +62,12 @@ TEXT_FILES = [
     "scripts/copy-assets.sh",
 ]
 
-# Répertoires à créer (déduits des fichiers + répertoires d'assets)
 DIRS = set()
 for f in TEXT_FILES:
     d = os.path.dirname(f)
     if d:
         DIRS.add(d)
 
-# Assets binaires (juste créer les dossiers, l'utilisateur uploadera les images)
 ASSET_DIRS = [
     "assets/logos",
     "assets/wallpapers",
