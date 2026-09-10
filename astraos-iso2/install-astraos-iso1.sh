@@ -182,26 +182,14 @@ ASTRAOS_EOF_MARKER_42_ZAI
 echo "  → Makefile"
 cat << 'ASTRAOS_EOF_MARKER_42_ZAI' > "Makefile"
 # ╔══════════════════════════════════════════════════════════════════════╗
-# ║                     AstraOS — Top-level Makefile                       ║
-# ║           Build orchestration for ISO + Dev container                  ║
-# ║            © 2026 AstraOS Project — Astra Corporation                  ║
+# ║                     AstraOS — Top-level Makefile                     ║
+# ║           Build orchestration for ISO + Dev container                ║
+# ║            © 2026 AstraOS Project — Astra Corporation                ║
 # ╚══════════════════════════════════════════════════════════════════════╝
-#
-# Usage:
-#   make                  # build the ISO (Core pack)
-#   make build-iso        # same as above
-#   make build-iso-dev    # build the Developer pack
-#   make build-iso-bureautique
-#   make clean            # wipe work/ and out/
-#   make dev              # bash in the dev container
-#   make test-qemu        # boot the built ISO in QEMU
-#   make copy-assets      # stage assets into airootfs (for local testing)
-#   make help
 
 SHELL := /usr/bin/env bash
 .DEFAULT_GOAL := build-iso
 
-# ── Variables ───────────────────────────────────────────────────────────
 PACK     ?= core
 IMAGE    := astraos-builder
 DEV_IMG  := astraos-dev
@@ -222,7 +210,6 @@ CYAN  := \033[36m
 YEL   := \033[33m
 RST   := \033[0m
 
-# ── Phony targets ───────────────────────────────────────────────────────
 .PHONY: help build-iso build-iso-dev build-iso-bureautique \
         clean dev devshell test-qemu copy-assets lint-assets \
         docker-shell
