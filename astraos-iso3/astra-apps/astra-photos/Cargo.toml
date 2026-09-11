@@ -1,0 +1,17 @@
+[package]
+name = "astra-photos"
+version = "0.3.0"
+edition = "2021"
+license = "MIT"
+authors = ["AstraOS Project"]
+
+[dependencies]
+gtk4 = "0.9"
+glib = "0.20"
+gio = "0.20"
+log = "0.4"
+env_logger = "0.11"
+
+[[bin]]
+name = "astra-photos"
+path = "src/main.rs"

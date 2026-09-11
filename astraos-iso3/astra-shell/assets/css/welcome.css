@@ -1,0 +1,221 @@
+/* welcome.css — AstraOS ISO 2 Welcome / Lock / Onboarding screen styles.
+ *
+ * Glassmorphism dark theme with magenta/indigo accent.
+ * Loaded by astra-shell (Task 2-a main.rs) via gtk4::CssProvider.
+ *
+ * Color palette:
+ *   - background deep   #0b0d17 (almost-black violet)
+ *   - background mid    #1e1b3a
+ *   - background top     #2d1b4e (magenta-leaning violet)
+ *   - foreground strong #f1f5f9 (near-white)
+ *   - foreground mid     #94a3b8 (slate)
+ *   - foreground dim     #64748b / #475569 (slate dim)
+ *   - accent indigo      #818cf8 (tailwind indigo-400)
+ *   - accent magenta     #d946ef (tailwind fuchsia-500, used in proto)
+ *   - danger red         #ef4444
+ *   - success green      #22c55e
+ */
+
+/* =========================================================================
+ * Welcome Screen
+ * ========================================================================= */
+
+window.astra-welcome {
+    background: linear-gradient(135deg, #0b0d17 0%, #1e1b3a 50%, #2d1b4e 100%);
+}
+
+.astra-welcome-logo {
+    font-size: 96pt;
+    color: #818cf8;
+    text-shadow: 0 0 32px rgba(129, 140, 248, 0.6);
+    margin-bottom: 40px;
+}
+
+.astra-welcome-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 36pt;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: 0.02em;
+}
+
+.astra-welcome-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    color: #94a3b8;
+    margin-top: 8px;
+}
+
+/* Blinking caret — driven by the label text itself (the typed char + '|'),
+ * but if a `::after` caret is ever added via CSS it should blink at 1Hz. */
+@keyframes blink {
+    0%, 50%   { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.astra-welcome-title::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+/* =========================================================================
+ * Lock Screen
+ * ========================================================================= */
+
+window.astra-lock-screen {
+    background: rgba(11, 13, 23, 0.85);
+    backdrop-filter: blur(40px) saturate(150%);
+}
+
+.astra-lock-clock {
+    font-family: 'Outfit', sans-serif;
+    font-size: 90pt;
+    font-weight: 200;
+    color: #f1f5f9;
+    margin-bottom: 0;
+}
+
+.astra-lock-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 20pt;
+    color: #94a3b8;
+    margin-bottom: 40px;
+}
+
+.astra-lock-avatar {
+    font-size: 64pt;
+    background: linear-gradient(135deg, #c4c4c4, #9e9e9e, #757565);
+    border-radius: 90px;
+    min-width: 180px;
+    min-height: 180px;
+}
+
+.astra-lock-username {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24pt;
+    color: #f1f5f9;
+    margin-bottom: 20px;
+}
+
+.astra-lock-input {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 24px;
+    color: #f1f5f9;
+    font-size: 14pt;
+    min-width: 260px;
+    transition: all 0.2s ease;
+}
+
+.astra-lock-input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+    min-width: 280px;
+}
+
+.astra-lock-submit {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    color: #f1f5f9;
+    font-size: 16pt;
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+}
+
+.astra-lock-submit:hover {
+    background: rgba(129, 140, 248, 0.3);
+}
+
+/* Shake animation triggered when the `error` CSS class is toggled on
+ * the password entry by `lock_screen.rs::do_submit()`. */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-10px); }
+    75%      { transform: translateX(10px); }
+}
+
+.astra-lock-input.error {
+    border-color: #ef4444;
+    animation: shake 0.4s ease-in-out;
+}
+
+/* =========================================================================
+ * Onboarding Wizard
+ * ========================================================================= */
+
+window.astra-onboarding {
+    background: rgba(11, 13, 23, 0.95);
+    backdrop-filter: blur(30px);
+    border-radius: 16px;
+}
+
+/* Progress dots — active is indigo accent, inactive is slate-dim. */
+.astra-dot-active {
+    color: #818cf8;
+    font-size: 16pt;
+}
+
+.astra-dot-inactive {
+    color: #475569;
+    font-size: 12pt;
+}
+
+.astra-step-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24pt;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+}
+
+.astra-step-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    color: #94a3b8;
+}
+
+.astra-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    color: #64748b;
+    font-style: italic;
+}
+
+.astra-checkmark {
+    font-size: 64pt;
+    color: #22c55e;
+    margin-bottom: 20px;
+}
+
+/* Generic AstraOS button (used by the Back / Next / Finish buttons).
+ * Concrete accent classes (astra-back / astra-next / astra-finish)
+ * can override the background-color per role; defined here as a base. */
+.astra-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    padding: 10px 22px;
+    border-radius: 20px;
+    color: #f1f5f9;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+}
+
+.astra-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.astra-next,
+.astra-finish {
+    background: rgba(129, 140, 248, 0.85);
+    border-color: rgba(129, 140, 248, 0.9);
+    color: #0b0d17;
+    font-weight: 600;
+}
+
+.astra-next:hover,
+.astra-finish:hover {
+    background: rgba(129, 140, 248, 1.0);
+}

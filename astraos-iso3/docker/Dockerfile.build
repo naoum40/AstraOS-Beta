@@ -1,0 +1,78 @@
+# syntax=docker/dockerfile:1.6
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║              AstraOS — ISO build Dockerfile                            ║
+# ║      Reproducible ISO builds via archiso inside a container            ║
+# ║            © 2026 AstraOS Project — Astra Corporation                  ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+#
+# Build context = the root of the astraos/ repository.
+# Output ISO is written to /out (mount a host volume there).
+
+FROM archlinux:latest
+
+# Avoid interactive prompts and pin a sane locale.
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    PACMAN=true \
+    PACK=core
+
+# ── Base system + ISO build dependencies ────────────────────────────────
+# Includes Rust toolchain + GTK4 dev deps so Astra Shell can be built
+# inside the chroot during `customize_airootfs.sh`.
+# NOTE: `gtk4-rs` is a Rust crate, NOT an Arch system package — it is
+# pulled automatically by `cargo build` via Cargo.toml, so it is
+# deliberately omitted from the pacman install list below.
+RUN pacman -Syu --noconfirm --needed \
+        archiso \
+        squashfs-tools \
+        dosfstools \
+        e2fsprogs \
+        xorriso \
+        grub \
+        efibootmgr \
+        mtools \
+        bash \
+        ca-certificates \
+        # Rust toolchain for Astra Shell build
+        rust \
+        cargo \
+        # GTK4 dev deps
+        gtk4 \
+        libadwaita \
+        pkgconf \
+        clang \
+        meson \
+        ninja \
+        openssl \
+        git \
+        # ISO 3 additions — file associations + MIME helpers
+        xdg-utils \
+        mime-types \
+    && rm -rf /var/cache/pacman/pkg/*
+
+# ── Build context ───────────────────────────────────────────────────────
+COPY . /astraos-build
+
+WORKDIR /astraos-build
+
+# Make the archiso profile script executable if present
+# (also chmod the Astra Shell + Astra apps build scripts for ISO 2+ / ISO 3)
+RUN chmod +x /astraos-build/iso/x86_64/profiledef.sh 2>/dev/null || true \
+    && chmod +x /astraos-build/iso/x86_64/customize_airootfs.sh \
+    && chmod +x /astraos-build/iso/x86_64/build-astra-shell.sh \
+    && chmod +x /astraos-build/iso/x86_64/build-astra-apps.sh 2>/dev/null || true \
+    && chmod +x /astraos-build/scripts/copy-assets.sh 2>/dev/null || true
+
+# ── Stage AstraOS assets into the airootfs ──────────────────────────────
+RUN /astraos-build/scripts/copy-assets.sh
+
+# ── Default build command ──────────────────────────────────────────────
+# mkarchiso arguments:
+#   -v   : verbose
+#   -w   : working directory (squashfs build scratch)
+#   -o   : output directory (where the .iso lands)
+#   last : archiso profile path
+#
+# $PACK lets you switch profiles (core / developer / bureautique / gaming)
+# by overriding the env var at runtime; the default is "core".
+CMD ["sh", "-c", "exec mkarchiso -v -w /work -o /out /astraos-build/iso/x86_64"]
