@@ -1,0 +1,10 @@
+# greetd configuration for AstraOS ISO 2
+# Launches Astra Shell (if available) or falls back to Hyprland
+
+[terminal]
+vt = 1
+switch = true
+
+[default_session]
+command = "astra-shell"
+user = "astra"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AstraOS
+Name[fr]=AstraOS
+Comment=AstraOS Shell Session
+Comment[fr]=Session AstraOS
+Exec=/usr/bin/astra-shell
+Type=Application
+DesktopNames=astraos
+X-GDM-SessionRegisters=true

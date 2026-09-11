@@ -1,0 +1,147 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# AstraOS ISO 3 - Base packages (v0.3.0)
+# x86_64 package list for archiso build.
+#
+# NOTE: paru-bin (AUR helper) is NOT available in official Arch repos.
+# It is installed by customize_airootfs.sh from AUR at build time,
+# with a first-boot fallback if the build-time install fails.
+#
+# NOTE: brave-bin (Brave browser) is NOT in official Arch repos either.
+# It is installed by customize_airootfs.sh from AUR at build time,
+# replacing firefox as the default web browser in ISO 3.
+#
+
+## AstraOS ISO 3 - Base packages (v0.3.0)
+
+## Base system
+base
+base-devel
+linux
+linux-firmware
+intel-ucode
+amd-ucode
+
+## Bootloader & ISO tools
+syslinux
+edk2-ovmf
+squashfs-tools
+archiso
+
+## Filesystem
+btrfs-progs
+dosfstools
+e2fsprogs
+exfatprogs
+f2fs-tools
+ntfs-3g
+xfsprogs
+
+## Networking
+networkmanager
+iwd
+modemmanager
+openresolv
+
+## Audio
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+wireplumber
+pamixer
+
+## Display (Hyprland stack)
+hyprland
+qt5-wayland
+qt6-wayland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-gnome
+greetd
+greetd-gtkgreet
+kitty
+
+## Essential utilities
+bash-completion
+btop
+ca-certificates
+cronie
+cryptsetup
+dbus-broker
+efibootmgr
+openssh
+openvpn
+pacman-contrib
+ppp
+rsync
+sudo
+systemd-resolvconf
+usbutils
+vim
+wget
+which
+wireless_tools
+wpa_supplicant
+
+## AstraOS branding & UX
+neofetch
+fastfetch
+htop
+bat
+eza
+fd
+ripgrep
+starship
+thunar
+thunar-archive-plugin
+thunar-volman
+tumbler
+file-roller
+gvfs
+gvfs-mtp
+# firefox  # removed in ISO 3 — replaced by brave-bin (AUR, installed via customize_airootfs.sh)
+vlc
+ttf-dejavu
+ttf-liberation
+noto-fonts
+noto-fonts-emoji
+
+## Screenshot
+grim
+slurp
+wl-clipboard
+
+## Astra Shell build dependencies (ISO 2+)
+rust
+cargo
+gtk4
+# NOTE: gtk4-rs is a Rust *crate*, not an Arch system package.
+# Querying the official repos (extra/x86_64) returns HTTP 404, and adding
+# it to this file would break `pacman -Sy` with "target not found".
+# cargo pulls gtk4-rs automatically via Cargo.toml during `cargo build`.
+libadwaita
+pkgconf
+clang
+meson
+ninja
+openssl
+git
+
+## Astra Shell runtime dependencies
+cairo
+pango
+gdk-pixbuf2
+graphene
+harfbuzz
+freetype2
+fontconfig
+
+## ISO 3 additions — file associations + Brave + VLC helpers
+# brave-bin is NOT in official Arch repos (AUR only).
+# Installed by customize_airootfs.sh from AUR at build time.
+# Listed here as documentation; not a pacman line (commented).
+# brave-bin  # AUR — installed via customize_airootfs.sh
+xdg-utils
+mime-types
