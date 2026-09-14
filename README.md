@@ -8,7 +8,7 @@
 
 <br>
 
-![Status](https://img.shields.io/badge/Status-Work_in_Progress-818cf8?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Work_in_Paused-818cf8?style=for-the-badge)
 ![Version](https://img.shields.io/badge/Version-0.3.0-8b5cf6?style=for-the-badge)
 ![Base](https://img.shields.io/badge/Base-Arch_Linux-1793d1?style=for-the-badge)
 ![License](https://img.shields.io/badge/Code-MIT-blue?style=for-the-badge)
@@ -94,6 +94,8 @@ Plusieurs éditions sont prévues :
 ## 🗺️ Roadmap
 
 ### Phase 1 — v1.0
+
+**Projet en pause**
 
 | ISO       | Version | Contenu                            | État                |
 | --------- | ------: | ---------------------------------- | ------------------- |
