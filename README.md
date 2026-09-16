@@ -63,15 +63,15 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│                  AstraOS                              │
+│                  AstraOS                             │
 ├──────────────────────────────────────────────────────┤
 │                                                      │
 │  INTERFACE UTILISATEUR (UI)                          │
 │  ┌────────────────────────────────────────────────┐  │
-│  │ 🦀 Rust + GTK4-rs                              │  │
-│  │ → Astra Shell (barre, dock, launcher)         │  │
-│  │ → Apps custom (AstraPass, Widgets, etc.)      │  │
-│  │ → Glassmorphism via GTK4 CSS                  │  │
+│  │ 🦀 Rust + GTK4-rs                             │  │
+│  │ → Astra Shell (barre, dock, launcher)          │  │
+│  │ → Apps custom (AstraPass, Widgets, etc.)       │  │
+│  │ → Glassmorphism via GTK4 CSS                   │  │
 │  └────────────────────────────────────────────────┘  │
 │                                                      │
 │  DAEMONS CRITIQUES (performance + safety)            │
@@ -279,9 +279,9 @@ make test-qemu
 | **Phase 3** | Astra Gaming Launcher (Steam/Epic/Ubisoft unifié) + Astra Phone Sync |
 | **Phase 4** | Astra WinBox beta (WinVmX) |
 | **Phase 5** | Astra WinBox stable + Sunshine streaming |
-| **Phase 6** | AstraOS ARM (Support RTX Spark) + Soretta 2|
+| **Phase 6** | AstraOS ARM (Support RTX Spark) avec Soretta 2|
 | **Phase 7** | Waydroid (apps Android native) |
-
+| **Phase 8** | Astra Container (WinContainerX) |
 Voir [`docs/ROADMAP.md`](docs/ROADMAP.md) pour les détails.
 
 ---
