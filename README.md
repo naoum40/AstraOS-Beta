@@ -43,7 +43,7 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 | Boot loaders + branding | Bash + configs | ✅ OK | ISO 1 |
 | Astra Shell (barre, dock, launcher, lock screen) | Rust + GTK4-rs | ✅ OK | ISO 2 |
 | Welcome screen (typing animation) | Rust + GTK4-rs | ✅ OK | ISO 2 |
-| Apps système | ✅ OK | ISO 3 |
+| Apps système |Rust| ✅ OK | ISO 3 |
 | **AstraPass** (AES-GCM 256)| Rust + GTK4-rs | **🔜 En Cours**| ISO 4 |
 | Widgets desktop | Rust + GTK4-rs | **🔜 En Cours**| ISO 4 |
 | Sticky Notes | Rust + GTK4-rs | 🔜 | ISO 4 |
