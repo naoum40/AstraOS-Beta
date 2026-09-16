@@ -281,7 +281,7 @@ make test-qemu
 | **Phase 5** | Astra WinBox stable + Sunshine streaming |
 | **Phase 6** | AstraOS ARM (Support RTX Spark) avec Soretta 2|
 | **Phase 7** | Waydroid (apps Android native) |
-| **Phase 8** | Astra Container (WinContainerX) |
+| **Phase 8** | Astra Container (WinContainerX) et (WinDriverX) |
 Voir [`docs/ROADMAP.md`](docs/ROADMAP.md) pour les détails.
 
 ---
