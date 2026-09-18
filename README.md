@@ -318,13 +318,14 @@ Voir [`docs/ROADMAP.md`](docs/ROADMAP.md) pour les détails.
 
 ### Indépendance (stratégie Apple Silicon)
 
-AstraOS verticalise la stack : UI AstraOS propriétaire + backends agnostiques.
+AstraOS verticalise du stack : UI AstraOS propriétaire + backends agnostiques.
 
 ```
 Astra Mail     = UI AstraOS + IMAP/Gmail/Outlook (backends existants)
 Astra Sync     = UI AstraOS + Drive/Dropbox/Nextcloud (backends existants)
 Astra Gaming   = UI AstraOS + Steam/Epic/Ubisoft (backends existants)
-Astra Bridge   = UI AstraOS + WinVmX (backends proprietaire)
+Astra Bridge   = UI AstraOS + WinBridgeX (backends proprietaire)
+Astra WinBox   = UI AstraOS + WinVmX (backends proprietaire)
 ```
 
 ### Open source et transparence
