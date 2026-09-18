@@ -17,11 +17,11 @@
 
 **AstraOS** est un système d'exploitation Linux basé sur Arch Linux, conçu pour le grand public avec une philosophie claire : **performance, élégance, indépendance**.
 
-Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS possède sa propre couche d'interface construite en Rust + GTK4-rs, tout en restant compatible avec l'écosystème Arch Linux.
+Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS possède sa propre couche d'interface construite en Rust + GTK4-rs, tout en restant compatible avec l'écosystème Arch Linux.
 
 ### 🎯 Objectifs
 
-- 🚀 **Performance maximale** — ~250-300 Mo de RAM au boot (vs 4-6 Go pour Windows 11)
+- 🚀 **Performance maximale** — ~450-750 Mo de RAM au boot (vs 3-5 Go pour Windows 11)
 - 🎨 **Glassmorphism natif** — Transparence, blur, animations fluides
 - 🛡️ **Indépendance totale** — UI AstraOS propriétaire + backends agnostiques
 - 🇫🇷 **Grand public francophone** — Locale FR par défaut, multi-langue à venir
