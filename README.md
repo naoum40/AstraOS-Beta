@@ -68,7 +68,7 @@ Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS pos
 │                                                      │
 │  INTERFACE UTILISATEUR (UI)                          │
 │  ┌────────────────────────────────────────────────┐  │
-│  │ 🦀 Rust + GTK4-rs                             │  │
+│  │ 🦀 Rust + GTK4-rs                              |  |
 │  │ → Astra Shell (barre, dock, launcher)          │  │
 │  │ → Apps custom (AstraPass, Widgets, etc.)       │  │
 │  │ → Glassmorphism via GTK4 CSS                   │  │
@@ -76,10 +76,10 @@ Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS pos
 │                                                      │
 │  DAEMONS CRITIQUES (performance + safety)            │
 │  ┌────────────────────────────────────────────────┐  │
-│  │ 🦀 Rust pur                                   │  │
-│  │ → Astra Update (A/B partition + signatures)   │  │
-│  │ → Astra WinBox daemon (gaming VM, phase 4+)   │  │
-│  │ → Astra Defender backend (ClamAV wrapper)     │  │
+│  │ 🦀 Rust pur                                   │  │ 
+│  │ → Astra Update (A/B partition + signatures)   │   │
+│  │ → Astra WinBox daemon (gaming VM, phase 4+)   │   │
+│  │ → Astra Defender backend (ClamAV wrapper)     │   │
 │  └────────────────────────────────────────────────┘  │
 │                                                      │
 │  COMPOSITOR WAYLAND                                  │
@@ -115,10 +115,10 @@ Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS pos
 | Comme Windows/macOS | ✅ (Swift/C# equiv) | ❌ | ❌ |
 
 **Comparaison RAM au boot** :
-- Windows 11 : 4-6 Go
+- Windows 11 : 3-5 Go
 - Ubuntu (GNOME/JS) : 1.2-1.5 Go
 - macOS Sonoma (Swift/ARC) : 2-3 Go
-- **AstraOS (Rust)** : **~450-600 Mo** ✅ le plus économe
+- **AstraOS (Rust)** : **~450-750 Mo** ✅ le plus économe
 
 ---
 
@@ -129,9 +129,9 @@ AstraOS proposera plusieurs ISO packs selon l'usage :
 | Pack | Cible | Apps préinstallées |
 |---|---|---|
 | **Core** ⭐ | Base minimale AstraOS | Hyprland + apps custom AstraOS |
-| **Developer** | Développeurs | Core + VSCodium + Dragon Code + Docker + Git + Rust toolchain |
-| **Bureautique** | Grand public pro | Core + LibreOffice (rien d'autre) |
-| **Gaming** | Gamers (phase 3+) | Core + Astra Gaming Launcher + WinVmX + Waydroid|
+| **Developer** 🖥️ | Développeurs | Core + VSCodium + Dragon Code + Docker + Git + Rust toolchain |
+| **Bureautique** 🏢 | Grand public pro | Core + LibreOffice (rien d'autre) |
+| **Gaming** 🎮 | Gamers (phase 3+) | Core + Astra Gaming Launcher + WinVmX + Waydroid|
 
 Si vous êtes presser de tester voici la commande 
 Build command : `make build-iso pack=core` (ou `developer`, `bureautique`, `gaming`)
