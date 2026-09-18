@@ -6,7 +6,7 @@
 
 <br>
 
-![Status](https://img.shields.io/badge/Status-Iso3-818cf8?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Paused-818cf8?style=for-the-badge)
 ![Version](https://img.shields.io/badge/Version-0.3.0-8b5cf6?style=for-the-badge)
 ![Base](https://img.shields.io/badge/Base-Arch_Linux-1793d1?style=for-the-badge)
 ![License](https://img.shields.io/badge/Code-MIT-blue?style=for-the-badge)
