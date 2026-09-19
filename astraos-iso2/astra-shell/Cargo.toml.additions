@@ -1,0 +1,22 @@
+# Cargo.toml.additions — additional dependencies introduced by Task 2-b
+# (Welcome + Lock + Onboarding screens).
+#
+# Task 2-c will MERGE these into the main `Cargo.toml` created by Task 2-a
+# (deduplicating any already-present entries). Do NOT rename or restructure
+# this file — Task 2-c reads it verbatim and concatenates into `[dependencies]`.
+#
+# All crate versions verified present on crates.io as of the ISO 2 build:
+#   - sha2   0.10  (RustCrypto / Digest trait, SHA-256)
+#   - hex    0.4   (hex encoding of SHA-256 digests)
+#   - chrono 0.4   (clock + date formatting for the lock screen)
+#   - toml   0.8   (for persisting onboarding config — used by Task 2-c)
+#   - log    0.4   (logging facade; likely already declared by Task 2-a,
+#                   re-declared here defensively so the screens module
+#                   compiles standalone in `cargo check`)
+
+[dependencies]
+sha2 = "0.10"
+hex = "0.4"
+chrono = "0.4"
+toml = "0.8"
+log = "0.4"
