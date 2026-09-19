@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Astra Screenshot
+Name[fr]=Capture d'écran AstraOS
+Comment=Take screenshots
+Comment[fr]=Prendre des captures d'écran
+Exec=astra-screenshot
+Icon=camera-photo
+Terminal=false
+Type=Application
+Categories=Graphics;Utility;
+StartupNotify=true
