@@ -19,9 +19,13 @@ echo "KEYMAP=fr-latin9" > /etc/vconsole.conf
 echo "FONT=eurlatgr" >> /etc/vconsole.conf
 echo "✓ Console keymap set to fr-latin9"
 
-# Create user 'astra'
-useradd -m -G wheel -s /bin/bash astra
-echo "✓ User 'astra' created (member of wheel)"
+# Create user 'astra' if it does not already exist
+if ! id -u astra >/dev/null 2>&1; then
+    useradd -m -G wheel -s /bin/bash astra
+    echo "✓ User 'astra' created (member of wheel)"
+else
+    echo "✓ User 'astra' already exists"
+fi
 
 # Set passwords (default = astraos, will be changed at install)
 echo "root:astraos" | chpasswd
@@ -34,6 +38,7 @@ systemctl enable iwd.service
 systemctl enable greetd.service
 systemctl enable systemd-timesyncd.service
 systemctl enable systemd-resolved.service
+systemctl enable serial-getty@ttyS0.service
 echo "✓ Services enabled"
 
 # Create AstraOS config directories
