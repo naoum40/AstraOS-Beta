@@ -1,36 +1,27 @@
 <div align="center">
 
+<img src="astraos-iso1/assets/logos/logo-astraos.png" width="180">
+
 # ✦ AstraOS
 
-### Système d'exploitation Linux moderne, performant et indépendant
+<br>
 
-**Arch Linux-based · Wayland · Hyprland · Rust · GTK4 · Glassmorphism**
-
-</div>
-
----
-
-<div align="center">
-
-![Status](https://img.shields.io/badge/Status-Work_in_Progress-818cf8?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-0.1.0_(ISO_1)-8b5cf6?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Paused-818cf8?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.3.0-8b5cf6?style=for-the-badge)
 ![Base](https://img.shields.io/badge/Base-Arch_Linux-1793d1?style=for-the-badge)
-![Shell](https://img.shields.io/badge/Shell-Rust_+GTK4-rs-dea584?style=for-the-badge)
+![License](https://img.shields.io/badge/Code-MIT-blue?style=for-the-badge)
 
 </div>
-
----
 
 ## 🌟 À propos d'AstraOS
 
 **AstraOS** est un système d'exploitation Linux basé sur Arch Linux, conçu pour le grand public avec une philosophie claire : **performance, élégance, indépendance**.
 
-Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS possède sa propre couche d'interface construite en Rust + GTK4-rs, tout en restant compatible avec l'écosystème Arch Linux.
+Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS possède sa propre couche d'interface construite en Rust + GTK4-rs, tout en restant compatible avec l'écosystème Arch Linux.
 
 ### 🎯 Objectifs
 
-- 🚀 **Performance maximale** — ~250-300 Mo de RAM au boot (vs 4-6 Go pour Windows 11)
+- 🚀 **Performance maximale** — ~450-750 Mo de RAM au boot (vs 3-5 Go pour Windows 11)
 - 🎨 **Glassmorphism natif** — Transparence, blur, animations fluides
 - 🛡️ **Indépendance totale** — UI AstraOS propriétaire + backends agnostiques
 - 🇫🇷 **Grand public francophone** — Locale FR par défaut, multi-langue à venir
@@ -42,9 +33,7 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 
 > 🚧 **AstraOS est en cours de développement actif.**
 >
-> La version actuelle est **0.1.0 (ISO 1)** — base système uniquement.
->
-> Le code Rust (Astra Shell + apps custom) arrive à partir de l'ISO 2.
+> La version actuelle est **0.3.0 (ISO 3)**
 
 ### 📍 Composants actuels et à venir
 
@@ -52,11 +41,11 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 |---|---|---|---|
 | Base Arch Linux + Hyprland | C/C++ (existant) | ✅ OK | ISO 1 |
 | Boot loaders + branding | Bash + configs | ✅ OK | ISO 1 |
-| **Astra Shell** (barre, dock, launcher, lock screen) | **Rust + GTK4-rs** | 🔜 En cours | ISO 2 |
-| Welcome screen (typing animation) | Rust + GTK4-rs | 🔜 En cours | ISO 2 |
-| Apps système (Terminal, Files, Firefox, VLC) | (préinstallés) | 🔜 | ISO 3 |
-| **AstraPass** (gestionnaire mots de passe) | Rust + GTK4-rs | 🔜 | ISO 4 |
-| Widgets desktop | Rust + GTK4-rs | 🔜 | ISO 4 |
+| Astra Shell (barre, dock, launcher, lock screen) | Rust + GTK4-rs | ✅ OK | ISO 2 |
+| Welcome screen (typing animation) | Rust + GTK4-rs | ✅ OK | ISO 2 |
+| Apps système |Rust| ✅ OK | ISO 3 |
+| **AstraPass** (AES-GCM 256)| Rust + GTK4-rs | **🔜 En Cours**| ISO 4 |
+| Widgets desktop | Rust + GTK4-rs | **🔜 En Cours**| ISO 4 |
 | Sticky Notes | Rust + GTK4-rs | 🔜 | ISO 4 |
 | Jeux (Démineur, Morpion, Snake) | Rust + GTK4-rs | 🔜 | ISO 4 |
 | Astra Defender (antivirus) | Rust + GTK4-rs | 🔜 | ISO 5 |
@@ -74,23 +63,23 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│                  AstraOS                              │
+│                  AstraOS                             │
 ├──────────────────────────────────────────────────────┤
 │                                                      │
 │  INTERFACE UTILISATEUR (UI)                          │
 │  ┌────────────────────────────────────────────────┐  │
-│  │ 🦀 Rust + GTK4-rs                              │  │
-│  │ → Astra Shell (barre, dock, launcher)         │  │
-│  │ → Apps custom (AstraPass, Widgets, etc.)      │  │
-│  │ → Glassmorphism via GTK4 CSS                  │  │
+│  │ 🦀 Rust + GTK4-rs                              |  |
+│  │ → Astra Shell (barre, dock, launcher)          │  │
+│  │ → Apps custom (AstraPass, Widgets, etc.)       │  │
+│  │ → Glassmorphism via GTK4 CSS                   │  │
 │  └────────────────────────────────────────────────┘  │
 │                                                      │
 │  DAEMONS CRITIQUES (performance + safety)            │
 │  ┌────────────────────────────────────────────────┐  │
-│  │ 🦀 Rust pur                                   │  │
-│  │ → Astra Update (A/B partition + signatures)   │  │
-│  │ → Astra WinBox daemon (gaming VM, phase 4+)   │  │
-│  │ → Astra Defender backend (ClamAV wrapper)     │  │
+│  │ 🦀 Rust pur                                   │  │ 
+│  │ → Astra Update (A/B partition + signatures)   │   │
+│  │ → Astra WinBox daemon (gaming VM, phase 4+)   │   │
+│  │ → Astra Defender backend (ClamAV wrapper)     │   │
 │  └────────────────────────────────────────────────┘  │
 │                                                      │
 │  COMPOSITOR WAYLAND                                  │
@@ -126,10 +115,10 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 | Comme Windows/macOS | ✅ (Swift/C# equiv) | ❌ | ❌ |
 
 **Comparaison RAM au boot** :
-- Windows 11 : 4-6 Go
+- Windows 11 : 3-5 Go
 - Ubuntu (GNOME/JS) : 1.2-1.5 Go
 - macOS Sonoma (Swift/ARC) : 2-3 Go
-- **AstraOS (Rust)** : **~250-300 Mo** ✅ le plus économe
+- **AstraOS (Rust)** : **~450-750 Mo** ✅ le plus économe
 
 ---
 
@@ -139,37 +128,13 @@ AstraOS proposera plusieurs ISO packs selon l'usage :
 
 | Pack | Cible | Apps préinstallées |
 |---|---|---|
-| **Core** ⭐ | Base minimale (power users) | Hyprland + Terminal + Files + Settings + apps custom AstraOS |
-| **Developer** | Développeurs | Core + VSCodium + Claude Code + Docker + Git + Rust toolchain |
-| **Bureautique** | Grand public pro | Core + Brave + LibreOffice (rien d'autre) |
-| **Gaming** | Gamers (phase 3+) | Core + Astra Gaming Launcher + Steam + Proton + RetroArch |
+| **Core** ⭐ | Base minimale AstraOS | Hyprland + apps custom AstraOS |
+| **Developer** 🖥️ | Développeurs | Core + VSCodium + Dragon Code + Docker + Git + Rust toolchain |
+| **Bureautique** 🏢 | Grand public pro | Core + LibreOffice (rien d'autre) |
+| **Gaming** 🎮 | Gamers (phase 3+) | Core + Astra Gaming Launcher + WinVmX + Waydroid|
 
+Si vous êtes presser de tester voici la commande 
 Build command : `make build-iso pack=core` (ou `developer`, `bureautique`, `gaming`)
-
----
-
-## 🎮 Stratégie Gaming (post-v1.0)
-
-AstraOS devient **l'agrégateur gaming** unifié :
-
-```
-┌─────────────────────────────────────────────────────┐
-│              Astra Gaming Launcher                   │
-│         (UI AstraOS glassmorphism, Rust)             │
-├─────────────────────────────────────────────────────┤
-│  Niveau 1 : Natif Linux (CS2, Apex, OW2, Dota 2)   │
-│  Niveau 2 : Astra Bridge (Wine/Proton)             │
-│             Cyberpunk, Elden Ring, tous les Steam   │
-│  Niveau 3 : RetroArch (SNES, PS2, GC, Switch)      │
-│  Niveau 4 : Waydroid (apps Android)                │
-│  Niveau 5 : Astra WinBox (VM gaming, phase 4+)     │
-│             Valorant, R6, Fortnite (ban risk)      │
-└─────────────────────────────────────────────────────┘
-```
-
-**Indépendance philosophy** : AstraOS possède la couche UI, les plateformes (Steam, Epic, Ubisoft) restent des backends invisibles.
-
----
 
 ## 🏗️ Architecture du repository
 
@@ -242,7 +207,7 @@ astraos/
 
 ---
 
-## 🚀 Installation & Build
+## 🚀 Installation & Build (non conseiller attendre la v1)
 
 ### Prérequis
 
@@ -298,10 +263,10 @@ make test-qemu
 
 | ISO | Version | Contenu | Statut |
 |---|---|---|---|
-| **ISO 1** | 0.1 | Base Arch + Hyprland + branding AstraOS | ✅ **Build OK** |
-| ISO 2 | 0.2 | + Astra Shell + welcome typing animation | 🔜 En cours |
-| ISO 3 | 0.3 | + Apps système (Terminal, Files, Firefox, VLC) | ⏳ À venir |
-| ISO 4 | 0.4 | + AstraPass, Widgets, Sticky Notes, 3 jeux | ⏳ À venir |
+| **ISO 1** | 0.1 | Base Arch + Hyprland + branding AstraOS | ✅ Finis |
+| ISO 2 | 0.2 | + Astra Shell + welcome typing animation | ✅ Finis |
+| ISO 3 | 0.3 | + Apps système | ✅ Finis |
+| ISO 4 | 0.4 | + AstraPass, Widgets, Sticky Notes | **🔜 En cours** |
 | ISO 5 | 0.5 | + Astra Defender, Task Manager, Performance Mode | ⏳ À venir |
 | ISO 6 | 0.6 | + Astra Assistant, Screen recorder, Screenshot | ⏳ À venir |
 | ISO 7 | 1.0 | + Astra Gaming Launcher + Calamares + i18n | ⏳ À venir |
@@ -310,13 +275,13 @@ make test-qemu
 
 | Phase | Features |
 |---|---|
-| **Phase 2** | Astra Bridge (Wine/Proton) + Astra Mail + Astra Sync + Astra Store + Astra Photos |
+| **Phase 2** | Astra Bridge (WinBridgeX) + Astra Mail + Astra Sync + Astra Store |
 | **Phase 3** | Astra Gaming Launcher (Steam/Epic/Ubisoft unifié) + Astra Phone Sync |
-| **Phase 4** | Astra WinBox beta (VM gaming, power users) |
-| **Phase 5** | Astra WinBox stable + Sunshine streaming + Astra Mobile |
-| **Phase 6** | AstraOS ARM (RTX Spark target) + Box64/FEX-Emu |
+| **Phase 4** | Astra WinBox beta (WinVmX) |
+| **Phase 5** | Astra WinBox stable + Sunshine streaming |
+| **Phase 6** | AstraOS ARM (Support RTX Spark) avec Soretta 2|
 | **Phase 7** | Waydroid (apps Android native) |
-
+| **Phase 8** | Astra Container (WinContainerX) et (WinDriverX) |
 Voir [`docs/ROADMAP.md`](docs/ROADMAP.md) pour les détails.
 
 ---
@@ -353,18 +318,15 @@ Voir [`docs/ROADMAP.md`](docs/ROADMAP.md) pour les détails.
 
 ### Indépendance (stratégie Apple Silicon)
 
-AstraOS verticalise la stack : UI AstraOS propriétaire + backends agnostiques.
+AstraOS verticalise du stack : UI AstraOS propriétaire + backends agnostiques.
 
 ```
 Astra Mail     = UI AstraOS + IMAP/Gmail/Outlook (backends existants)
 Astra Sync     = UI AstraOS + Drive/Dropbox/Nextcloud (backends existants)
 Astra Gaming   = UI AstraOS + Steam/Epic/Ubisoft (backends existants)
-Astra Bridge   = UI AstraOS + Wine/Proton/DXVK (backends existants)
+Astra Bridge   = UI AstraOS + WinBridgeX (backends proprietaire)
+Astra WinBox   = UI AstraOS + WinVmX (backends proprietaire)
 ```
-
-### Boycott Tencent
-
-AstraOS ne supporte pas officiellement les jeux Tencent avec anti-cheat kernel (Valorant, etc.). LoL (Riot mais sans anti-cheat kernel) fonctionne nativement, on ne le bloque pas mais on ne le promeut pas.
 
 ### Open source et transparence
 
@@ -395,7 +357,7 @@ of this software and associated documentation files...
 **AstraOS Project** — *Astra Corporation by (mmtstudio)*
 
 - **Concept & Direction** : Naoum (@naoum40)
-- **Développement & Architecture** : Z.ai Code Assistant
+- **Développement & Architecture** : Naoum et GLM 5.2
 - **Base technique** : Arch Linux, Hyprland, GTK4, Rust
 - **Logo & branding** : MMT Studio
 
@@ -403,8 +365,9 @@ of this software and associated documentation files...
 
 ## 🔗 Liens utiles
 
-- 📦 **Repo GitHub** : [github.com/naoum40/astraos-iso-test](https://github.com/naoum40/astraos-iso-test)
+- 📦 **Repo GitHub** : [github.com/naoum40/astraos-iso-test](https://github.com/naoum40/AstraOS-Beta)
 - 🐛 **Signaler un bug** : [Issues GitHub](https://github.com/naoum40/astraos-iso-test/issues)
+- 🐦 **Twiter** :
 - 📖 **Documentation** : [`docs/`](docs/)
 - 🗺️ **Roadmap** : [`docs/ROADMAP.md`](docs/ROADMAP.md)
 - 🏗️ **Architecture** : [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
@@ -414,9 +377,7 @@ of this software and associated documentation files...
 
 <div align="center">
 
-### ✦ AstraOS — *Le futur de l'OS Linux*
-
-**Performance · Élégance · Indépendance**
+### ✦ AstraOS
 
 *Made with 🧡 by Astra Corporation (mmtstudio)*
 
