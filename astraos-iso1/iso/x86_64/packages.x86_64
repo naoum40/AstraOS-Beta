@@ -1,0 +1,109 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# AstraOS ISO 1 - Base packages (v0.1.0)
+# x86_64 package list for archiso build.
+#
+# NOTE: paru-bin (AUR helper) is NOT available in official Arch repos.
+# It is installed by customize_airootfs.sh from AUR at build time,
+# with a first-boot fallback if the build-time install fails.
+#
+
+## AstraOS ISO 1 - Base packages (v0.1.0)
+
+## Base system
+base
+base-devel
+linux
+linux-firmware
+intel-ucode
+amd-ucode
+
+## Bootloader & ISO tools
+syslinux
+edk2-ovmf
+squashfs-tools
+archiso
+
+## Filesystem
+btrfs-progs
+dosfstools
+e2fsprogs
+exfatprogs
+f2fs-tools
+ntfs-3g
+xfsprogs
+
+## Networking
+networkmanager
+iwd
+modemmanager
+openresolv
+
+## Audio
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+wireplumber
+pamixer
+
+## Display (Hyprland stack)
+hyprland
+qt5-wayland
+qt6-wayland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-gnome
+greetd
+greetd-gtkgreet
+kitty
+
+## Essential utilities
+bash-completion
+btop
+ca-certificates
+cronie
+cryptsetup
+dbus-broker
+efibootmgr
+openssh
+openvpn
+pacman-contrib
+ppp
+rsync
+sudo
+systemd-resolvconf
+usbutils
+vim
+wget
+which
+wireless_tools
+wpa_supplicant
+
+## AstraOS branding & UX
+neofetch
+fastfetch
+htop
+bat
+eza
+fd
+ripgrep
+starship
+thunar
+thunar-archive-plugin
+thunar-volman
+tumbler
+file-roller
+gvfs
+gvfs-mtp
+firefox
+ttf-dejavu
+ttf-liberation
+noto-fonts
+noto-fonts-emoji
+
+## Screenshot
+grim
+slurp
+wl-clipboard
