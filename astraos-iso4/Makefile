@@ -26,6 +26,7 @@ PWD      := $(shell pwd)
 ISO_NAME ?= astraos-$(PACK)
 OUT_DIR  := out
 WORK_DIR := work
+PORTAL_DIR ?= ../extracted-astra-boot-portal/Astra-Boot-Portal
 
 # QEMU defaults — tuned for VirtualBox-ish test experience.
 QEMU_MEM   ?= 4096
@@ -65,6 +66,11 @@ build-iso: ## Build the ISO with the Core pack (default)
 	    -e PACK=$(PACK) \
 	    -v $(PWD)/$(OUT_DIR):/out \
 	    $(IMAGE):latest
+	@if ls $(OUT_DIR)/*.iso >/dev/null 2>&1; then \
+		mkdir -p $(PORTAL_DIR); \
+		cp -f $(OUT_DIR)/*.iso $(PORTAL_DIR)/astraos.iso; \
+		printf "$(MAG)✦$(RST) ISO copied to portal → $(BOLD)$(PORTAL_DIR)/astraos.iso$(RST)\n"; \
+	fi
 	@printf "$(MAG)✦$(RST) ISO ready → $(BOLD)$(OUT_DIR)/$(ISO_NAME).iso$(RST)\n"
 
 build-iso-dev: ## Build the ISO with the Developer pack
