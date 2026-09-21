@@ -38,7 +38,22 @@ systemctl enable iwd.service
 systemctl enable greetd.service
 systemctl enable systemd-timesyncd.service
 systemctl enable systemd-resolved.service
+systemctl enable serial-getty@ttyS0.service
 echo "✓ Services enabled"
+
+# Ensure PipeWire has a valid default config set in the image.
+# Without /etc/pipewire/client.conf, PipeWire logs a harmless warning at boot
+# even though it can still start. This makes the generated ISO consistent and
+# avoids the missing-client.conf noise.
+mkdir -p /etc/pipewire /etc/pipewire/client.conf.d /etc/pipewire/pipewire.conf.d
+if [ -d /usr/share/pipewire ]; then
+    cp -n /usr/share/pipewire/*.conf /etc/pipewire/ 2>/dev/null || true
+fi
+mkdir -p /etc/wireplumber/main.lua.d
+if [ -d /usr/share/wireplumber ]; then
+    cp -n /usr/share/wireplumber/main.lua.d/*.lua /etc/wireplumber/main.lua.d/ 2>/dev/null || true
+fi
+echo "✓ PipeWire default configs ensured"
 
 # Create AstraOS config directories
 mkdir -p /etc/astra
