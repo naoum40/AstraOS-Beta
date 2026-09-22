@@ -9,7 +9,7 @@
 # Based on the official Arch Linux archiso template.
 
 iso_name="astraos"
-iso_label="ASTRAOS_$(date +%Y%m)"
+iso_label="ASTRAOS_0300"
 iso_publisher="AstraOS Project <https://astraos.org>"
 iso_application="AstraOS Live/Rescue Media"
 iso_version="0.4.0"
