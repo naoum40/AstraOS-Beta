@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=AstraPass
+Name[fr]=AstraPass
+Comment=Password Manager
+Comment[fr]=Gestionnaire de mots de passe
+Exec=astra-pass
+Icon=preferences-desktop-user-password
+Terminal=false
+Type=Application
+Categories=Utility;Security;
+StartupNotify=true

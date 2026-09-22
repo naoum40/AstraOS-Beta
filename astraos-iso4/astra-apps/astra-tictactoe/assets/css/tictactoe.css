@@ -1,0 +1,78 @@
+/* Astra Tic-Tac-Toe — stylesheet. */
+
+/* Root window — glassmorphism dark with accent #818cf8. */
+window.astra-tictactoe {
+    background: rgba(11, 13, 23, 0.96);
+    color: #f1f5f9;
+    font-family: 'Outfit', 'Inter', 'Cantarell', sans-serif;
+}
+
+/* Header bar: X score | reset | O score | draws. */
+.ttt-header {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 8px 14px;
+    margin: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Score labels. */
+.ttt-score {
+    font-size: 13pt;
+    font-weight: 700;
+    min-width: 70px;
+}
+.ttt-score.x { color: #0b6ad8; }
+.ttt-score.o { color: #ff2d55; }
+.ttt-score.draw { color: #94a3b8; }
+
+/* Reset button. */
+.ttt-reset {
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 6px 14px;
+    background: rgba(129, 140, 248, 0.20);
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    color: #f1f5f9;
+}
+.ttt-reset:hover {
+    background: rgba(129, 140, 248, 0.35);
+}
+.ttt-reset:active {
+    background: rgba(129, 140, 248, 0.50);
+}
+
+/* 80x80 cell buttons. */
+.ttt-cell {
+    min-width: 80px;
+    min-height: 80px;
+    font-size: 24pt;
+    font-weight: 700;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #f1f5f9;
+    padding: 0;
+}
+.ttt-cell:hover {
+    background: rgba(129, 140, 248, 0.18);
+}
+
+/* X marks — blue. */
+.ttt-cell.x { color: #0b6ad8; }
+/* O marks — red. */
+.ttt-cell.o { color: #ff2d55; }
+
+/* Winning line cells — highlighted with accent. */
+.ttt-cell.winner {
+    background: rgba(129, 140, 248, 0.35);
+    border-color: #818cf8;
+    box-shadow: 0 0 12px rgba(129, 140, 248, 0.45);
+}
+
+/* Status text. */
+.ttt-status {
+    color: #cbd5e1;
+    font-size: 11pt;
+    padding: 4px 0 8px;
+}

@@ -1,0 +1,15 @@
+[Default Applications]
+x-scheme-handler/http=brave-browser.desktop
+x-scheme-handler/https=brave-browser.desktop
+text/html=brave-browser.desktop
+image/png=astra-photos.desktop
+image/jpeg=astra-photos.desktop
+image/jpg=astra-photos.desktop
+image/webp=astra-photos.desktop
+image/gif=astra-photos.desktop
+video/mp4=vlc.desktop
+video/x-matroska=vlc.desktop
+audio/mpeg=vlc.desktop
+audio/flac=vlc.desktop
+application/pdf=brave-browser.desktop
+text/plain=codium.desktop

@@ -1,0 +1,43 @@
+{
+  "name": "AstraOS Dev",
+  "build": {
+    "dockerfile": "../docker/Dockerfile.dev",
+    "context": ".."
+  },
+  "remoteUser": "astra",
+  "containerUser": "astra",
+  "updateRemoteUserUID": true,
+  "privileged": true,
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "workspaceMount": "",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "ms-azuretools.vscode-docker",
+        "tamasfe.even-better-toml",
+        "redhat.vscode-yaml",
+        "bungcip.better-toml",
+        "serayuzgur.crates",
+        "vadimcn.vscode-lldb",
+        "ms-vscode.makefile-tools"
+      ],
+      "settings": {
+        "rust-analyzer.check.command": "clippy",
+        "rust-analyzer.cargo.features": "all",
+        "editor.formatOnSave": true,
+        "files.exclude": {
+          "**/target": true,
+          "**/work": true,
+          "**/out": true
+        }
+      }
+    }
+  },
+  "forwardPorts": [],
+  "postCreateCommand": "echo 'Welcome to AstraOS dev environment' && rustc --version && cargo --version",
+  "postStartCommand": "starship init bash > /dev/null 2>&1 || true"
+}

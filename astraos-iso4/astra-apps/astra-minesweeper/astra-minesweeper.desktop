@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Astra Minesweeper
+Name[fr]=Démineur AstraOS
+Comment=Classic minesweeper puzzle
+Comment[fr]=Démineur classique
+Exec=astra-minesweeper
+Icon=applications-games
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=true
