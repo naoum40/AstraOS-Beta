@@ -22,9 +22,15 @@ echo "KEYMAP=fr-latin9" > /etc/vconsole.conf
 echo "FONT=eurlatgr" >> /etc/vconsole.conf
 echo "✓ Console keymap set to fr-latin9"
 
-# Create user 'astra'
-useradd -m -G wheel -s /bin/bash astra
-echo "✓ User 'astra' created (member of wheel)"
+# Create or normalize user 'astra' for repeated builds.
+if id -u astra >/dev/null 2>&1; then
+    usermod -a -G wheel astra
+    chsh -s /bin/bash astra 2>/dev/null || true
+    echo "✓ User 'astra' already exists; ensured wheel access and bash shell"
+else
+    useradd -m -G wheel -s /bin/bash astra
+    echo "✓ User 'astra' created (member of wheel)"
+fi
 
 # Set passwords (default = astraos, will be changed at install)
 echo "root:astraos" | chpasswd
@@ -60,17 +66,21 @@ echo "✓ AstraOS directories created"
 # Install paru-bin from AUR (non-fatal if fails)
 if ! command -v paru &> /dev/null; then
     echo "→ Attempting paru-bin installation from AUR..."
-    useradd -m -G wheel -s /bin/bash paru-builder
+    if ! id -u paru-builder >/dev/null 2>&1; then
+        useradd -m -G wheel -s /bin/bash paru-builder
+    fi
     echo "paru-builder:astraos" | chpasswd
     echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-paru-builder
     cd /tmp
-    sudo -u paru-builder git clone https://aur.archlinux.org/paru-bin.git
-    cd /tmp/paru-bin
-    sudo -u paru-builder makepkg -si --noconfirm --noprogressbar || echo "⚠ paru install failed (will be retried at first boot)"
-    cd /
-    rm -rf /tmp/paru-bin
-    userdel -r paru-builder
-    rm /etc/sudoers.d/99-paru-builder
+    sudo -u paru-builder git clone https://aur.archlinux.org/paru-bin.git 2>/dev/null || true
+    if [ -d /tmp/paru-bin ]; then
+        cd /tmp/paru-bin
+        sudo -u paru-builder makepkg -si --noconfirm --noprogressbar || echo "⚠ paru install failed (will be retried at first boot)"
+        cd /
+        rm -rf /tmp/paru-bin
+    fi
+    userdel -r paru-builder 2>/dev/null || true
+    rm -f /etc/sudoers.d/99-paru-builder
     echo "✓ paru-bin installation attempted"
 else
     echo "✓ paru already available"
@@ -130,7 +140,9 @@ fi
 
 # === Install Brave browser (AUR) ===
 echo "→ Installing Brave browser from AUR..."
-useradd -m -G wheel -s /bin/bash aur-builder 2>/dev/null || true
+if ! id -u aur-builder >/dev/null 2>&1; then
+    useradd -m -G wheel -s /bin/bash aur-builder
+fi
 echo "aur-builder:astraos" | chpasswd
 echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-aur-builder
 cd /tmp

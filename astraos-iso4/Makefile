@@ -55,6 +55,7 @@ help: ## Show this help
 ##@ Build
 build-iso: ## Build the ISO with the Core pack (default)
 	@printf "$(MAG)✦ AstraOS$(RST) — building $(BOLD)$(PACK)$(RST) pack ISO\n"
+	@rm -rf $(WORK_DIR) $(OUT_DIR)
 	docker build \
 	    --build-arg PACK=$(PACK) \
 	    -f docker/Dockerfile.build \
