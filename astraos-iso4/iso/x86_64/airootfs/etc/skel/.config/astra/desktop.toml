@@ -1,0 +1,14 @@
+[astraos]
+version = "0.2.0"
+edition = "Core"
+
+[ui]
+theme = "dark"
+accent = "#818cf8"
+wallpaper = "/usr/share/backgrounds/astraos/default-violet.png"
+glassmorphism = true
+taskbar_mode = "win"
+taskbar_align = "center"
+
+[input]
+keyboard_layout = "fr-latin9"

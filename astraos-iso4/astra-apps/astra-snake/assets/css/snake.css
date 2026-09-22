@@ -1,0 +1,58 @@
+/* Astra Snake — stylesheet.
+ *
+ * Root window carries .astra-snake. The score bar holds the live score
+ * label, the Reset button, and a controls hint. The canvas itself is a
+ * gtk4::DrawingArea (class .snake-canvas) painted with cairo.
+ *
+ * Palette:
+ *   - background:  deep navy glass
+ *   - accent:      #818cf8 (Astra purple)
+ *   - snake head:  #0b6ad8 (dark blue, drawn by cairo)
+ *   - snake body:  #4aa3ff (lighter blue, drawn by cairo)
+ *   - apple:       #e24a4a (red, drawn by cairo)
+ */
+
+/* Root window — glassmorphism dark. */
+window.astra-snake {
+    background: rgba(11, 13, 23, 0.96);
+    color: #f1f5f9;
+    font-family: 'Outfit', 'Inter', 'Cantarell', sans-serif;
+}
+
+/* Score bar — pill-shaped, holds score + reset + hint. */
+.snake-score-bar {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 8px 14px;
+    margin: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Score + hint labels — accent purple. */
+.snake-score {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #818cf8;
+}
+
+/* Reset button — accent-tinted. */
+.snake-reset {
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 6px 14px;
+    background: rgba(129, 140, 248, 0.20);
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    color: #f1f5f9;
+}
+.snake-reset:hover {
+    background: rgba(129, 140, 248, 0.35);
+}
+.snake-reset:active {
+    background: rgba(129, 140, 248, 0.50);
+}
+
+/* Drawing-area canvas — rounded corners + small horizontal margin. */
+.snake-canvas {
+    border-radius: 8px;
+    margin: 0 8px 8px;
+}

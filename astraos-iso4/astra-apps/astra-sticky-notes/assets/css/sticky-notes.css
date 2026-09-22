@@ -1,0 +1,99 @@
+/* Astra Sticky Notes — stylesheet.
+ *
+ * Each note is a borderless ApplicationWindow with one of six pastel
+ * background colors. The header row holds the editable title Entry,
+ * the 6-color dot picker, a "+" new-note button, and a "x" close
+ * button.
+ *
+ * Window-level classes:
+ *   - .astra-sticky               base note class (rounded, shadowed)
+ *   - .sticky-color-<name>        note background color
+ * Dot picker:
+ *   - .sticky-color-dot           base dot class (circular)
+ *   - .dot-<name>                 per-color background
+ */
+
+/* Base window: rounded corners, drop shadow, accent font. */
+window.astra-sticky {
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    font-family: 'Outfit', 'Inter', 'Cantarell', sans-serif;
+}
+
+/* Header row containing title entry, color picker, and buttons. */
+.sticky-header {
+    padding: 4px 6px;
+}
+
+/* Body TextView — transparent so the note color shows through. */
+.sticky-body {
+    background: transparent;
+}
+.sticky-body text {
+    background: transparent;
+    color: #1f2937;
+}
+.sticky-body text selection {
+    background: rgba(129, 140, 248, 0.5);
+}
+
+/* Title entry — flat, bold, transparent background. */
+.sticky-title {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font-weight: 700;
+    color: #1f2937;
+}
+.sticky-title:focus {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+}
+
+/* Color picker dots — circular buttons, one per note color. */
+button.sticky-color-dot {
+    min-width: 14px;
+    min-height: 14px;
+    border-radius: 999px;
+    padding: 0;
+    margin: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+button.sticky-color-dot:hover {
+    border-color: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55);
+}
+button.sticky-color-dot.dot-yellow { background: #fef08a; }
+button.sticky-color-dot.dot-red    { background: #fca5a5; }
+button.sticky-color-dot.dot-blue   { background: #a5b4fc; }
+button.sticky-color-dot.dot-green  { background: #86efac; }
+button.sticky-color-dot.dot-purple { background: #d8b4fe; }
+button.sticky-color-dot.dot-cyan   { background: #67e8f9; }
+
+/* Window background colors (one of six per note). */
+window.sticky-color-yellow { background: #fef08a; }
+window.sticky-color-red    { background: #fca5a5; }
+window.sticky-color-blue   { background: #a5b4fc; }
+window.sticky-color-green  { background: #86efac; }
+window.sticky-color-purple { background: #d8b4fe; }
+window.sticky-color-cyan   { background: #67e8f9; }
+
+/* "+" new-note and "x" close buttons. */
+button.sticky-close,
+button.sticky-add {
+    min-width: 22px;
+    min-height: 22px;
+    border-radius: 6px;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.10);
+    color: #1f2937;
+    font-weight: 700;
+}
+button.sticky-close:hover,
+button.sticky-add:hover {
+    background: rgba(0, 0, 0, 0.22);
+}
+button.sticky-close:active,
+button.sticky-add:active {
+    background: rgba(0, 0, 0, 0.30);
+}
