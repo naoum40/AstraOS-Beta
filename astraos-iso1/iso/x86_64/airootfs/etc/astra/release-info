@@ -1,0 +1,11 @@
+NAME="AstraOS"
+VERSION="0.1.0"
+EDITION="Core"
+VERSION_CODENAME=astraos
+BUILD_ID=2026.09
+PRETTY_NAME="AstraOS 0.1.0 (Core) - Live ISO"
+ANSI_COLOR="1;35"
+HOME_URL="https://astraos.org"
+DOCUMENTATION_URL="https://docs.astraos.org"
+SUPPORT_URL="https://community.astraos.org"
+BUG_REPORT_URL="https://github.com/astraos/astraos/issues"

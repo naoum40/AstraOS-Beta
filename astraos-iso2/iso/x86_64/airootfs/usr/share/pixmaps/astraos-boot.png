@@ -1,0 +1,18 @@
+PLACEHOLDER — AstraOS boot logo (pixmaps)
+
+This file is a placeholder. At ISO build time, the customize_airootfs.sh script
+(or the Makefile) must copy the real AstraOS boot logo to this exact path:
+
+    /usr/share/pixmaps/astraos-boot.png
+
+Source asset: /home/z/my-project/astraos/assets/logos/logo-boot.png
+  (the magenta star AstraOS logo — used for boot/splash screens)
+
+Suggested copy directive to add in customize_airootfs.sh:
+
+    install -Dm0644 \
+        /home/z/my-project/astraos/assets/logos/logo-boot.png \
+        "${AIROOTFS}/usr/share/pixmaps/astraos-boot.png"
+
+This file is intentionally a text placeholder so the build does not fail if
+the binary asset is missing in this repo snapshot.

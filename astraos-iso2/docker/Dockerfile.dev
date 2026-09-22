@@ -1,0 +1,58 @@
+# syntax=docker/dockerfile:1.6
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║              AstraOS — DevContainer Dockerfile                       ║
+# ║           Rust + GTK4-rs toolchain for Astra Shell dev               ║
+# ║            © 2026 AstraOS Project — Astra Corporation                ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+
+FROM archlinux:latest
+
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
+
+
+RUN pacman -Syu --noconfirm --needed \
+        base-devel \
+        rust \
+        rust-src \
+        cargo \
+        gtk4 \
+        gtk4-rs \
+        pkgconf \
+        git \
+        docker \
+        archiso \
+        neovim \
+        vim \
+        starship \
+        eza \
+        bat \
+        ripgrep \
+        fd \
+        fzf \
+        zoxide \
+        ttf-jetbrains-mono-nerd \
+        noto-fonts-emoji \
+        python \
+        python-pip \
+        curl \
+        wget \
+        sudo \
+    && rm -rf /var/cache/pacman/pkg/*
+
+RUN useradd -m -G wheel,docker -s /bin/bash astra \
+    && echo "astra:astra" | chpasswd \
+    && echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER astra
+WORKDIR /home/astra
+
+ENV PATH="/home/astra/.cargo/bin:${PATH}"
+
+# ── paru (AUR helper, Rust) ────────────────────────────────────────────
+RUN git clone --depth=1 https://aur.archlinux.org/paru.git /tmp/paru \
+    && cd /tmp/paru \
+    && makepkg -si --noconfirm \
+    && rm -rf /tmp/paru
+
+CMD ["bash"]

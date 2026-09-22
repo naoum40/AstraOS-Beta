@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Astra Photos
+Name[fr]=Photos AstraOS
+Comment=View images
+Comment[fr]=Visionner des images
+Exec=astra-photos %f
+Icon=image-x-generic
+Terminal=false
+Type=Application
+Categories=Graphics;Viewer;
+MimeType=image/png;image/jpeg;image/jpg;image/webp;image/gif;
+StartupNotify=true

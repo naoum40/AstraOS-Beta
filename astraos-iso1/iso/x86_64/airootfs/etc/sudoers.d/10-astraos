@@ -1,0 +1,7 @@
+# AstraOS sudoers drop-in — wheel group gets full sudo with password feedback.
+# File: /etc/sudoers.d/10-astraos
+# Mode: 0440 (enforced by archiso file_permissions if needed, but sudo
+# requires 0440 — install scripts usually set this).
+
+%wheel ALL=(ALL:ALL) ALL
+Defaults pwfeedback

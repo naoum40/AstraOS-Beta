@@ -1,0 +1,192 @@
+/* =========================================================================
+ * Astra Shell - Glassmorphism theme
+ * -------------------------------------------------------------------------
+ * Stylesheet for the Astra Shell surfaces (bar / dock / launcher).
+ *
+ * Loaded by `astra-shell/src/theme.rs` onto the default `gdk::Display`
+ * at `GTK_STYLE_PROVIDER_PRIORITY_APPLICATION` (priority 600), so user
+ * themes (loaded at `_USER` priority 800) can still override it.
+ *
+ * Palette (AstraOS design system):
+ *   bg            #0b0d17   (almost-black violet)
+ *   panel         rgba(22, 25, 40, 0.7)   (translucent panel surface)
+ *   accent        #818cf8   (tailwind indigo-400)
+ *   accent_2      #8b5cf6   (tailwind violet-500)
+ *   highlight     #E040FB   (magenta)
+ *   text          #f1f5f9   (near-white)
+ *   text_dim      #94a3b8   (slate-400)
+ *   border        rgba(255, 255, 255, 0.1)
+ *
+ * Fonts (loaded by Hyprland via the airootfs skel `~/.config/fontconfig`):
+ *   Outfit          - display (clock, start button)
+ *   Inter           - body (UI text)
+ *   JetBrains Mono  - mono (clock in terminal widgets)
+ * ========================================================================= */
+
+@define-color astra_bg              #0b0d17;
+@define-color astra_panel           rgba(22, 25, 40, 0.7);
+@define-color astra_accent          #818cf8;
+@define-color astra_accent_secondary #8b5cf6;
+@define-color astra_highlight       #E040FB;
+@define-color astra_text            #f1f5f9;
+@define-color astra_text_secondary  #94a3b8;
+@define-color astra_border          rgba(255, 255, 255, 0.1);
+
+/* =========================================================================
+ * Bar (taskbar - Windows mode)
+ * ========================================================================= */
+window.astra-bar {
+    background: @astra_panel;
+    backdrop-filter: blur(20px);
+    border: 1px solid @astra_border;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: @astra_text;
+    font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+/* =========================================================================
+ * Dock (Mac mode)
+ * ========================================================================= */
+window.astra-dock {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================================================
+ * Launcher
+ * ========================================================================= */
+window.astra-launcher {
+    background: rgba(11, 13, 23, 0.95);
+    backdrop-filter: blur(30px);
+    border-radius: 16px;
+    border: 1px solid @astra_border;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================================
+ * Buttons - generic shell button class
+ * ========================================================================= */
+button.astra-button {
+    background: transparent;
+    color: @astra_text;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    min-width: 32px;
+    min-height: 32px;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.astra-button:hover {
+    background: rgba(129, 140, 248, 0.2);
+    transform: scale(1.05);
+}
+
+button.astra-button:active {
+    background: rgba(129, 140, 248, 0.4);
+    transform: scale(0.95);
+}
+
+/* --- Start button (✦) - accent-colored, magenta glow on hover --------- */
+button.astra-start {
+    font-size: 18pt;
+    color: @astra_accent;
+}
+
+button.astra-start:hover {
+    color: @astra_highlight;
+    text-shadow: 0 0 12px rgba(224, 64, 251, 0.6);
+}
+
+/* --- Workspace indicators (1-9) --------------------------------------- */
+button.astra-workspace {
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 12px;
+    padding: 2px;
+    font-size: 9pt;
+}
+
+button.astra-workspace.active {
+    background: @astra_accent;
+    color: white;
+}
+
+/* =========================================================================
+ * Dock items - macOS-style magnification on hover
+ * ========================================================================= */
+button.astra-dock-item {
+    font-size: 24pt;
+    border-radius: 16px;
+    min-width: 48px;
+    min-height: 48px;
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+button.astra-dock-item:hover {
+    transform: scale(1.4) translateY(-8px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================================
+ * Clock
+ * ========================================================================= */
+.astra-clock {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    color: @astra_text;
+    padding: 0 8px;
+}
+
+/* =========================================================================
+ * Search entry (launcher)
+ * ========================================================================= */
+searchentry.astra-search {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: @astra_text;
+    font-size: 14pt;
+    border: 1px solid @astra_border;
+}
+
+searchentry.astra-search:focus {
+    border-color: @astra_accent;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+/* =========================================================================
+ * App icon grid (launcher)
+ * ========================================================================= */
+button.astra-app-icon {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    color: @astra_text;
+    font-size: 11pt;
+    transition: all 200ms ease;
+}
+
+button.astra-app-icon:hover {
+    background: rgba(129, 140, 248, 0.2);
+    border: 1px solid @astra_accent;
+}
+
+/* =========================================================================
+ * Animations
+ * ========================================================================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
