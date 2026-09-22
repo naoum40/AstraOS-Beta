@@ -1,0 +1,21 @@
+[package]
+name = "astra-settings"
+version = "0.3.0"
+edition = "2021"
+description = "AstraOS Settings Application"
+license = "MIT"
+authors = ["AstraOS Project <hello@astraos.org>"]
+
+[dependencies]
+gtk4 = "0.9"
+libadwaita = "0.7"
+glib = "0.20"
+gio = "0.20"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+log = "0.4"
+env_logger = "0.11"
+
+[[bin]]
+name = "astra-settings"
+path = "src/main.rs"

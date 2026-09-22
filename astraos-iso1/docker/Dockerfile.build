@@ -1,0 +1,38 @@
+# syntax=docker/dockerfile:1.6
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║              AstraOS — ISO build Dockerfile                          ║
+# ║      Reproducible ISO builds via archiso inside a container          ║
+# ║            © 2026 AstraOS Project — Astra Corporation                ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+
+
+FROM archlinux:latest
+
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    PACMAN=true \
+    PACK=core
+
+RUN pacman -Syu --noconfirm --needed \
+        archiso \
+        squashfs-tools \
+        dosfstools \
+        e2fsprogs \
+        xorriso \
+        grub \
+        efibootmgr \
+        mtools \
+        bash \
+        ca-certificates \
+    && rm -rf /var/cache/pacman/pkg/*
+
+COPY . /astraos-build
+
+WORKDIR /astraos-build
+
+RUN chmod +x /astraos-build/iso/x86_64/profiledef.sh 2>/dev/null || true \
+    && chmod +x /astraos-build/scripts/copy-assets.sh 2>/dev/null || true
+
+RUN /astraos-build/scripts/copy-assets.sh
+
+CMD ["sh", "-c", "exec mkarchiso -v -w /work -o /out /astraos-build/iso/x86_64"]

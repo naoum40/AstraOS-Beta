@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# AstraOS Boot Splash Banner
+#
+# Minimal console banner shown during boot of AstraOS Live ISO 1 (v0.1).
+# For ISO 1 we keep it dead simple: cat the ASCII art banner to the console.
+# Future ISOs will replace this with a proper Plymouth splash / pv progress bar.
+
+[Unit]
+Description=AstraOS Boot Splash Banner
+Documentation=https://astraos.local/docs/boot-splash
+DefaultDependencies=no
+After=local-fs.target
+Before=multi-user.target
+ConditionPathExists=/etc/astra/boot-banner
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cat /etc/astra/boot-banner
+RemainAfterExit=yes
+StandardOutput=tty
+StandardError=tty
+
+[Install]
+WantedBy=multi-user.target

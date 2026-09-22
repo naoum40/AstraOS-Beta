@@ -1,0 +1,405 @@
+/* settings.css - Astra Settings glassmorphism stylesheet.
+ *
+ * Targets every widget class emitted by the astra-settings Rust code:
+ *   - window.astra-settings            dark blurred background
+ *   - .astra-sidebar / .astra-nav-button / .astra-nav-button.active
+ *   - .astra-content / .astra-page / .astra-page-title
+ *   - .astra-row / .astra-row-title / .astra-row-subtitle
+ *   - .astra-switch (GtkSwitch active = accent color)
+ *   - .astra-accent-grid / .astra-color-button (circular swatches,
+ *     each tagged with an .accent-<HEX> class for its fill)
+ *   - .astra-wallpaper-thumb (rounded thumbnail buttons)
+ *   - .astra-combo / .astra-avatar / .astra-username / .astra-user-info
+ *   - .astra-storage / .astra-defender-row / .astra-defender-dot
+ *   - .astra-logo-large / .astra-about-title / .astra-about-info
+ *
+ * Color palette:
+ *   - Background base  : rgba(18, 18, 32, 0.85)  (near-black violet)
+ *   - Panel surface    : rgba(30, 28, 50, 0.55)   (translucent panel)
+ *   - Text primary     : #ECECF4
+ *   - Text secondary   : rgba(236, 236, 244, 0.65)
+ *   - Accent           : #818cf8  (Indigo-400 - matches AstraOS brand)
+ *   - Accent secondary : #5856D6  (Indigo-500 - hover state)
+ */
+
+/* ----------------------------------------------------------------- */
+/* Window chrome                                                     */
+/* ----------------------------------------------------------------- */
+
+window.astra-settings {
+    background-color: rgba(18, 18, 32, 0.85);
+    color: #ECECF4;
+}
+
+/* The leaflet is the top-level split (sidebar | content). Make sure
+ * it does not paint its own background - we want the window's
+ * glassmorphism background to bleed through. */
+.astra-leaflet {
+    background: transparent;
+}
+
+/* ----------------------------------------------------------------- */
+/* Sidebar                                                           */
+/* ----------------------------------------------------------------- */
+
+.astra-sidebar {
+    background: rgba(30, 28, 50, 0.55);
+    border-radius: 14px;
+    margin: 12px 6px 12px 12px;
+    padding: 8px;
+}
+
+.astra-sidebar-title {
+    color: #ECECF4;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.astra-sidebar-subtitle {
+    color: rgba(236, 236, 244, 0.55);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* Sidebar buttons are transparent by default, hover slightly lifts. */
+.astra-nav-button {
+    background: transparent;
+    color: rgba(236, 236, 244, 0.85);
+    border-radius: 10px;
+    padding: 10px 8px;
+    border: none;
+    box-shadow: none;
+    transition: all 120ms ease;
+}
+
+.astra-nav-button:hover {
+    background: rgba(129, 140, 248, 0.12);
+    color: #FFFFFF;
+}
+
+.astra-nav-button:active {
+    background: rgba(129, 140, 248, 0.20);
+}
+
+/* Active navigation button gets the accent gradient. */
+.astra-nav-button.active {
+    background: linear-gradient(135deg, #818cf8 0%, #5856D6 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow:
+        0 4px 12px rgba(129, 140, 248, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.astra-nav-button.active:hover {
+    background: linear-gradient(135deg, #9aa1fb 0%, #6f6ce6 100%);
+}
+
+/* The icon + label row inside each nav button. */
+.astra-nav-button image {
+    color: inherit;
+    -gtk-icon-size: 18px;
+}
+
+.astra-nav-button label {
+    color: inherit;
+    font-weight: inherit;
+}
+
+/* ----------------------------------------------------------------- */
+/* Content area + page chrome                                         */
+/* ----------------------------------------------------------------- */
+
+.astra-content {
+    background: rgba(20, 18, 36, 0.45);
+    border-radius: 14px;
+    margin: 12px 12px 12px 6px;
+    padding: 4px;
+}
+
+.astra-page {
+    color: #ECECF4;
+}
+
+.astra-page-title {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.astra-section-title {
+    color: rgba(236, 236, 244, 0.85);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* ----------------------------------------------------------------- */
+/* Generic row (used by personalization + system pages)               */
+/* ----------------------------------------------------------------- */
+
+.astra-row {
+    background: rgba(40, 36, 64, 0.55);
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.astra-row-title {
+    color: #ECECF4;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.astra-row-subtitle {
+    color: rgba(236, 236, 244, 0.55);
+    font-size: 12px;
+}
+
+/* ----------------------------------------------------------------- */
+/* Switches (GtkSwitch)                                               */
+/* ----------------------------------------------------------------- */
+
+.astra-switch {
+    min-width: 52px;
+    min-height: 28px;
+}
+
+.astra-switch:checked {
+    background: #818cf8;
+    border-color: #818cf8;
+}
+
+.astra-switch:checked:hover {
+    background: #9aa1fb;
+    border-color: #9aa1fb;
+}
+
+.astra-switch slider {
+    background: #FFFFFF;
+}
+
+/* ----------------------------------------------------------------- */
+/* Accent color picker (circular swatches)                            */
+/* ----------------------------------------------------------------- */
+
+.astra-accent-grid {
+    margin-top: 6px;
+}
+
+.astra-color-button {
+    border-radius: 9999px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.astra-color-button:hover {
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+.astra-color-button:active {
+    border-color: #FFFFFF;
+}
+
+/* Each color button is tagged .accent-<HEX> in the Rust code so the
+ * background matches its tooltip text. */
+.accent-0078d7 { background: #0078d7; }
+.accent-107C10 { background: #107C10; }
+.accent-D83B01 { background: #D83B01; }
+.accent-8E8E93 { background: #8E8E93; }
+.accent-FF2D55 { background: #FF2D55; }
+.accent-5856D6 { background: #5856D6; }
+.accent-00B7C3 { background: #00B7C3; }
+.accent-FFB900 { background: #FFB900; }
+
+/* ----------------------------------------------------------------- */
+/* Wallpaper thumbnails                                              */
+/* ----------------------------------------------------------------- */
+
+.astra-wallpaper-thumb {
+    border-radius: 10px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: rgba(60, 50, 100, 0.30);
+}
+
+.astra-wallpaper-thumb:hover {
+    border-color: #818cf8;
+}
+
+/* Each wallpaper button has its name set in Rust (#default-violet,
+ * #default-bleu, #classic). We paint a quick CSS gradient as a stand-in
+ * for the real PNG thumbnail - the real PNG will be loaded at runtime
+ * when the wallpaper picker is upgraded to use GtkImage. */
+#astra-wallpaper-thumb#default-violet {
+    background: linear-gradient(135deg, #6d28d9 0%, #db2777 100%);
+}
+#default-violet {
+    background: linear-gradient(135deg, #6d28d9 0%, #db2777 100%);
+}
+#default-bleu {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
+}
+#classic {
+    background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+}
+
+/* ----------------------------------------------------------------- */
+/* ComboBoxText                                                       */
+/* ----------------------------------------------------------------- */
+
+.astra-combo {
+    min-width: 160px;
+    border-radius: 8px;
+}
+
+.astra-combo button,
+.astra-combo entry {
+    color: #ECECF4;
+    background: rgba(40, 36, 64, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.astra-combo popover contents {
+    background: rgba(28, 26, 48, 0.98);
+    color: #ECECF4;
+}
+
+/* ----------------------------------------------------------------- */
+/* Account page                                                      */
+/* ----------------------------------------------------------------- */
+
+.astra-account {
+    spacing: 18px;
+}
+
+.astra-avatar {
+    background: linear-gradient(135deg, #818cf8 0%, #5856D6 60%, #db2777 100%);
+    color: #FFFFFF;
+    font-size: 36px;
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 24px;
+    box-shadow:
+        0 8px 20px rgba(129, 140, 248, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+.astra-username {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.astra-user-info {
+    color: rgba(236, 236, 244, 0.65);
+    font-size: 13px;
+}
+
+.astra-button.suggested-action {
+    background: linear-gradient(135deg, #818cf8 0%, #5856D6 100%);
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 3px 10px rgba(129, 140, 248, 0.35);
+}
+
+.astra-button.suggested-action:hover {
+    background: linear-gradient(135deg, #9aa1fb 0%, #6f6ce6 100%);
+}
+
+/* ----------------------------------------------------------------- */
+/* System page                                                       */
+/* ----------------------------------------------------------------- */
+
+.astra-system {
+    spacing: 18px;
+}
+
+.astra-storage {
+    color: #ECECF4;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.astra-defender-row {
+    background: rgba(16, 80, 32, 0.30);
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid rgba(34, 197, 94, 0.20);
+}
+
+.astra-defender-dot {
+    background: #22c55e;
+    border-radius: 9999px;
+    color: transparent;
+    box-shadow:
+        0 0 8px rgba(34, 197, 94, 0.80),
+        0 0 16px rgba(34, 197, 94, 0.40);
+}
+
+.astra-defender-status {
+    color: #4ade80;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------------------- */
+/* About page                                                        */
+/* ----------------------------------------------------------------- */
+
+.astra-about {
+    spacing: 6px;
+}
+
+.astra-logo-large {
+    color: #818cf8;
+    font-size: 64pt;
+    font-weight: 700;
+    text-shadow:
+        0 0 18px rgba(129, 140, 248, 0.70),
+        0 0 36px rgba(129, 140, 248, 0.35);
+}
+
+.astra-about-title {
+    color: #FFFFFF;
+    font-size: 24pt;
+    font-weight: 700;
+}
+
+.astra-about-info {
+    color: rgba(236, 236, 244, 0.75);
+    font-size: 13px;
+}
+
+.astra-about-link {
+    color: #818cf8;
+}
+
+.astra-about-link label {
+    color: #818cf8;
+    text-decoration: none;
+}
+
+.astra-about-link:hover label {
+    color: #9aa1fb;
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------- */
+/* Stack transition (crossfade between pages)                        */
+/* ----------------------------------------------------------------- */
+
+stack {
+    transition-duration: 180ms;
+}

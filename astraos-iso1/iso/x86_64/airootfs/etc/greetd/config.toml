@@ -1,0 +1,17 @@
+# greetd configuration for AstraOS
+# greetd is the display manager that launches Hyprland at boot
+
+[terminal]
+# The VT to run the greeter on
+vt = 1
+
+# Switch to this VT when starting the greeter
+switch = true
+
+[default_session]
+# Launch Hyprland directly (no greeter for ISO 1 - we'll add custom lock screen in ISO 2)
+# This is a live ISO, so we auto-login as 'astra' user
+command = "Hyprland"
+
+# The user to run the session as
+user = "astra"
