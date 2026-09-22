@@ -84,7 +84,6 @@ wireless_tools
 wpa_supplicant
 
 ## AstraOS branding & UX
-neofetch
 fastfetch
 htop
 bat
@@ -112,7 +111,6 @@ wl-clipboard
 
 ## Astra Shell build dependencies (ISO 2+)
 rust
-cargo
 gtk4
 # NOTE: gtk4-rs is a Rust *crate*, not an Arch system package.
 # Querying the official repos (extra/x86_64) returns HTTP 404, and adding
