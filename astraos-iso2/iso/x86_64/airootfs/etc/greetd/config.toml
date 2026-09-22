@@ -1,7 +1,0 @@
-[terminal]
-vt = 1
-switch = true
-
-[default_session]
-command = "astra-shell"
-user = "astra"
