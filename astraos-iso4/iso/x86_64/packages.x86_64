@@ -24,6 +24,7 @@ syslinux
 edk2-ovmf
 squashfs-tools
 archiso
+mkinitcpio-archiso
 
 ## Filesystem
 btrfs-progs
@@ -38,7 +39,6 @@ xfsprogs
 networkmanager
 iwd
 modemmanager
-openresolv
 
 ## Audio
 pipewire
