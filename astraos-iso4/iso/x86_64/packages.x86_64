@@ -98,7 +98,7 @@ tumbler
 file-roller
 gvfs
 gvfs-mtp
-#firefox  # ISO 3: replaced by brave-bin (AUR, installed via customize_airootfs.sh)
+firefox
 ttf-dejavu
 ttf-liberation
 noto-fonts
@@ -142,4 +142,4 @@ jq
 xdg-utils
 mime-types
 
-## Note: brave-bin is in AUR, installed via customize_airootfs.sh
+## Note: Firefox is in official Arch repos (extra), no AUR needed

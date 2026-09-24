@@ -122,7 +122,7 @@ git push
 
 echo ""
 echo "╔══════════════════════════════════════════════════════════════╗"
-echo "║  ✦ Fixes pushés sur GitHub.                                    ║"
-echo "║  Prochaine étape : build sur Gitpod                            ║"
-echo "║    cd astraos-iso4 && make build-iso pack=core                ║"
+echo "║  ✦ Fixes pushés sur GitHub.                                  ║"
+echo "║  Prochaine étape : build sur Github                          ║"
+echo "║    cd astraos-iso4 && make build-iso pack=core               ║"
 echo "╚══════════════════════════════════════════════════════════════╝"

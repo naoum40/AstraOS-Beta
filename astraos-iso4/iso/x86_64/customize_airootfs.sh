@@ -138,28 +138,28 @@ if [ -d /astraos-build/astra-apps ]; then
     fi
 fi
 
-# === Install Brave browser (AUR) ===
-echo "→ Installing Brave browser from AUR..."
-if ! id -u aur-builder >/dev/null 2>&1; then
-    useradd -m -G wheel -s /bin/bash aur-builder
-fi
-echo "aur-builder:astraos" | chpasswd
-echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-aur-builder
-cd /tmp
-sudo -u aur-builder git clone https://aur.archlinux.org/brave-bin.git 2>/dev/null || true
-if [ -d /tmp/brave-bin ]; then
-    cd /tmp/brave-bin
-    sudo -u aur-builder makepkg -si --noconfirm --noprogressbar 2>/dev/null || echo "WARN: brave-bin install failed (will retry on first boot)"
-fi
-userdel -r aur-builder 2>/dev/null || true
-rm -f /etc/sudoers.d/99-aur-builder
+# DISABLED (Firefox in packages): # === Install Brave browser (AUR) ===
+# DISABLED (Firefox in packages): echo "→ Installing Brave browser from AUR..."
+# DISABLED (Firefox in packages): if ! id -u aur-builder >/dev/null 2>&1; then
+# DISABLED (Firefox in packages):     useradd -m -G wheel -s /bin/bash aur-builder
+# DISABLED (Firefox in packages): fi
+# DISABLED (Firefox in packages): echo "aur-builder:astraos" | chpasswd
+# DISABLED (Firefox in packages): echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-aur-builder
+# DISABLED (Firefox in packages): cd /tmp
+# DISABLED (Firefox in packages): sudo -u aur-builder git clone https://aur.archlinux.org/brave-bin.git 2>/dev/null || true
+# DISABLED (Firefox in packages): if [ -d /tmp/brave-bin ]; then
+# DISABLED (Firefox in packages):     cd /tmp/brave-bin
+# DISABLED (Firefox in packages):     sudo -u aur-builder makepkg -si --noconfirm --noprogressbar 2>/dev/null || echo "WARN: brave-bin install failed (will retry on first boot)"
+# DISABLED (Firefox in packages): fi
+# DISABLED (Firefox in packages): userdel -r aur-builder 2>/dev/null || true
+# DISABLED (Firefox in packages): rm -f /etc/sudoers.d/99-aur-builder
 
 # === File associations ===
 echo "→ Configuring file associations..."
 mkdir -p /usr/share/applications
-xdg-mime default brave-browser.desktop x-scheme-handler/http
-xdg-mime default brave-browser.desktop x-scheme-handler/https
-xdg-mime default brave-browser.desktop text/html
+xdg-mime default firefox.desktop x-scheme-handler/http
+xdg-mime default firefox.desktop x-scheme-handler/https
+xdg-mime default firefox.desktop text/html
 xdg-mime default astra-photos.desktop image/png
 xdg-mime default astra-photos.desktop image/jpeg
 xdg-mime default astra-photos.desktop image/jpg
@@ -171,7 +171,7 @@ xdg-mime default vlc.desktop video/x-matroska
 xdg-mime default vlc.desktop video/x-msvideo
 xdg-mime default vlc.desktop audio/mpeg
 xdg-mime default vlc.desktop audio/flac
-xdg-mime default brave-browser.desktop application/pdf
+xdg-mime default firefox.desktop application/pdf
 echo "✓ File associations configured"
 
 # Create Pictures directory for screenshots
