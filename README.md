@@ -132,6 +132,9 @@ AstraOS proposera plusieurs ISO packs selon l'usage :
 | **Developer** 🖥️ | Développeurs | Core + VSCodium + Dragon Code + Docker + Git + Rust toolchain |
 | **Bureautique** 🏢 | Grand public pro | Core + LibreOffice (rien d'autre) |
 | **Gaming** 🎮 | Gamers (phase 3+) | Core + Astra Gaming Launcher + WinVmX + Waydroid|
+| **Ultra** 🌟 | Ultra | Core + Developer + Bureautique + Gaming|
+
+
 
 Si vous êtes presser de tester voici la commande 
 Build command : `make build-iso pack=core` (ou `developer`, `bureautique`, `gaming`)
