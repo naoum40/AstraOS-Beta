@@ -377,7 +377,7 @@ of this software and associated documentation files...
 
 <div align="center">
 
-### ✦ AstraOS
+### ✦ The AstraOS Project
 
 *Made with 🧡 by Astra Corporation (mmtstudio)*
 
