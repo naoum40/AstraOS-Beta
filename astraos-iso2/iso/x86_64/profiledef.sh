@@ -4,15 +4,15 @@
 
 # shellcheck disable=SC2034
 
-# AstraOS ISO 1 (v0.1) — archiso profile definition
-# Base Arch Linux + Hyprland + AstraOS branding (minimum viable).
+# AstraOS ISO 2 (v0.2) — archiso profile definition
+# Base Arch Linux + Hyprland + Astra Shell.
 # Based on the official Arch Linux archiso template.
 
 iso_name="astraos"
 iso_label="ASTRAOS_$(date +%Y%m)"
 iso_publisher="AstraOS Project <https://astraos.org>"
 iso_application="AstraOS Live/Rescue Media"
-iso_version="0.1.0"
+iso_version="0.2.0"
 install_dir="astraos"
 buildmodes=("iso")
 bootmodes=("bios.syslinux" "uefi.systemd-boot")

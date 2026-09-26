@@ -13,7 +13,7 @@
 <div align="center">
 
 ![Status](https://img.shields.io/badge/Status-Work_in_Progress-818cf8?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-0.1.0_(ISO_1)-8b5cf6?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.2.0_(ISO_2)-8b5cf6?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 ![Base](https://img.shields.io/badge/Base-Arch_Linux-1793d1?style=for-the-badge)
 ![Shell](https://img.shields.io/badge/Shell-Rust_+GTK4-rs-dea584?style=for-the-badge)
@@ -42,7 +42,7 @@ Inspiré par la stratégie Apple Silicon (verticalisation de la stack), AstraOS 
 
 > 🚧 **AstraOS est en cours de développement actif.**
 >
-> La version actuelle est **0.1.0 (ISO 1)** — base système uniquement.
+> La version actuelle est **0.2.0 (ISO 2)** — base système et Astra Shell.
 >
 > Le code Rust (Astra Shell + apps custom) arrive à partir de l'ISO 2.
 
@@ -257,12 +257,12 @@ astraos/
 git clone https://github.com/naoum40/astraos-iso-test.git
 cd astraos-iso-test
 
-# 2. Build l'ISO Core (par défaut)
-make build-iso
+# 2. Build ISO 2 avec Astra Shell
+make build-iso-2
 
 # 3. L'ISO est prête
 ls -lh out/
-# → astraos-0.1.0-x86_64.iso (~1-2 Go)
+# → astraos-0.2.0-x86_64.iso (~1-2 Go)
 ```
 
 ### Autres commandes Makefile
