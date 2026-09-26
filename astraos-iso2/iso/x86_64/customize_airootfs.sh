@@ -14,7 +14,7 @@ echo "KEYMAP=fr-latin9" > /etc/vconsole.conf
 echo "FONT=eurlatgr" >> /etc/vconsole.conf
 echo "✓ Console keymap set to fr-latin9"
 
-useradd -m -G wheel -s /bin/bash astra
+useradd -m -G wheel -s /bin/bash astra 2>/dev/null || true
 echo "✓ User 'astra' created (member of wheel)"
 
 echo "root:astraos" | chpasswd
@@ -36,7 +36,7 @@ echo "✓ AstraOS directories created"
 
 if ! command -v paru &> /dev/null; then
     echo "→ Attempting paru-bin installation from AUR..."
-    useradd -m -G wheel -s /bin/bash paru-builder
+    useradd -m -G wheel -s /bin/bash paru-builder 2>/dev/null || true
     echo "paru-builder:astraos" | chpasswd
     echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-paru-builder
     cd /tmp

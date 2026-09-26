@@ -24,6 +24,7 @@ syslinux
 edk2-ovmf
 squashfs-tools
 archiso
+mkinitcpio-archiso
 
 ## Filesystem
 btrfs-progs
@@ -82,7 +83,6 @@ wireless_tools
 wpa_supplicant
 
 ## AstraOS branding & UX
-neofetch
 fastfetch
 htop
 bat

@@ -39,4 +39,3 @@ systemd-coredump:x:997:
 uuidd:x:68:
 dbus:x:81:
 tss:x:941:
-astra:x:1000:astra
