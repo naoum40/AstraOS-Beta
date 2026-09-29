@@ -368,7 +368,7 @@ of this software and associated documentation files...
 
 ## 🔗 Liens utiles
 
-- 📦 **Repo GitHub** : [(https://github.com/naoum40/AstraOS-Beta](https://github.com/naoum40/AstraOS-Beta))
+- 📦 **Repo GitHub** : [https://github.com/naoum40/AstraOS-Beta](https://github.com/naoum40/AstraOS-Beta)
 - 🐛 **Signaler un bug** : [Issues GitHub](https://github.com/naoum40/astraos-iso-test/issues)
 - 🐦 **Twiter** :
 - 📖 **Documentation** : [`docs/`](docs/)
