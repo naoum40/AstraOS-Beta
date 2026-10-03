@@ -1,0 +1,14 @@
+[package]
+name = "astra-shell-minimal"
+version = "0.1.0"
+edition = "2021"
+description = "AstraOS Minimal Shell (bar only) — Arch vs Debian test"
+license = "MIT"
+
+[dependencies]
+gtk4 = "0.9"
+glib = "0.20"
+
+[[bin]]
+name = "astra-shell"
+path = "src/main.rs"

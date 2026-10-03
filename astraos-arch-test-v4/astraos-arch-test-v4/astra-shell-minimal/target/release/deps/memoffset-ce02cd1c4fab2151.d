@@ -1,0 +1,10 @@
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/memoffset-ce02cd1c4fab2151.d: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs
+
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/libmemoffset-ce02cd1c4fab2151.rlib: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs
+
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/libmemoffset-ce02cd1c4fab2151.rmeta: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs
+
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs:

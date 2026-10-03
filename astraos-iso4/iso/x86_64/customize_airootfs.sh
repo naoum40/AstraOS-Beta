@@ -33,8 +33,10 @@ else
 fi
 
 # Set passwords (default = astraos, will be changed at install)
-echo "root:astraos" | chpasswd
-echo "astra:astraos" | chpasswd
+passwd -u root 2>/dev/null || true
+passwd -u astra 2>/dev/null || true
+echo "root:astraos" | chpasswd 2>/dev/null || true 2>/dev/null || true
+echo "astra:astraos" | chpasswd 2>/dev/null || true 2>/dev/null || true
 echo "✓ Default passwords set (will be changed at install)"
 
 # Enable services
@@ -103,6 +105,28 @@ if [ -d /astraos-build/astra-shell ]; then
     fi
 else
     echo "WARN: astra-shell/ directory not found in build context"
+fi
+
+# === Astra Setup build (GUI first-boot wizard) ===
+echo "→ Copying Astra Setup source to /usr/src/astra-setup..."
+mkdir -p /usr/src/astra-setup
+if [ -d /astraos-build/astra-setup ]; then
+    cp -r /astraos-build/astra-setup/* /usr/src/astra-setup/
+    echo "→ Building Astra Setup..." /usr/src/astra-setup
+    cargo build --release
+    install -Dm755 target/release/astra-setup /usr/bin/astra-setup
+    echo "✓ Astra Setup installed to /usr/bin/astra-setup"
+fi
+
+# === Astra Setup build (GUI first-boot wizard) ===
+echo "→ Copying Astra Setup source to /usr/src/astra-setup..."
+mkdir -p /usr/src/astra-setup
+if [ -d /astraos-build/astra-setup ]; then
+    cp -r /astraos-build/astra-setup/* /usr/src/astra-setup/
+    echo "→ Building Astra Setup..." /usr/src/astra-setup
+    cargo build --release
+    install -Dm755 target/release/astra-setup /usr/bin/astra-setup
+    echo "✓ Astra Setup installed to /usr/bin/astra-setup"
 fi
 
 # === greetd config ===

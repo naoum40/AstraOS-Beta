@@ -1,0 +1,15 @@
+[package]
+name = "astra-setup"
+version = "0.1.0"
+edition = "2021"
+description = "AstraOS First-Boot Setup Wizard"
+license = "MIT"
+
+[dependencies]
+gtk4 = "0.9"
+glib = "0.20"
+gio = "0.20"
+
+[[bin]]
+name = "astra-setup"
+path = "src/main.rs"

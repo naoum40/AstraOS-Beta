@@ -1,0 +1,1 @@
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/astra-shell: /workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/src/main.rs

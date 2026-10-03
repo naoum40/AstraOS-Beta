@@ -1,0 +1,10 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "agreety --cmd Hyprland"
+user = "astra"
+
+[initial_session]
+command = "Hyprland"
+user = "astra"

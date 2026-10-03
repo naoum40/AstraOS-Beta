@@ -1,0 +1,9 @@
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/gtk4_macros-951d95545ace388a.d: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/attribute_parser.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/composite_template_derive.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/template_callbacks_attribute.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/util.rs
+
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/libgtk4_macros-951d95545ace388a.so: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/attribute_parser.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/composite_template_derive.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/template_callbacks_attribute.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/util.rs
+
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/lib.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/attribute_parser.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/composite_template_derive.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/template_callbacks_attribute.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gtk4-macros-0.9.5/src/util.rs:

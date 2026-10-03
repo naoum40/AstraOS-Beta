@@ -1,0 +1,9 @@
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/futures_macro-e693a43874fc94a7.d: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/executor.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/join.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/select.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/stream_select.rs
+
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/libfutures_macro-e693a43874fc94a7.so: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/executor.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/join.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/select.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/stream_select.rs
+
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/lib.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/executor.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/join.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/select.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/futures-macro-0.3.34/src/stream_select.rs:

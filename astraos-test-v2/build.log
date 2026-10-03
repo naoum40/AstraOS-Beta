@@ -1,0 +1,8 @@
+make: Entering directory '/workspaces/AstraOS-Beta/astraos-test-v2/astraos-arch-test-v2/arch-test'
+docker run --rm --privileged -v /workspaces/AstraOS-Beta/astraos-test-v2/astraos-arch-test-v2/arch-test/out:/out -v /workspaces/AstraOS-Beta/astraos-test-v2/astraos-arch-test-v2/arch-test:/astraos-build astraos-builder:latest sh -c "mkarchiso -v -w /work -o /out /astraos-build/iso/x86_64"
+Unable to find image 'astraos-builder:latest' locally
+docker: Error response from daemon: pull access denied for astraos-builder, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+make: *** [Makefile:5: build-iso] Error 125
+make: Leaving directory '/workspaces/AstraOS-Beta/astraos-test-v2/astraos-arch-test-v2/arch-test'

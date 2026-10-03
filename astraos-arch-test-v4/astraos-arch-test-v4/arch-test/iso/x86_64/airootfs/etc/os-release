@@ -1,0 +1,6 @@
+NAME="AstraOS"
+PRETTY_NAME="AstraOS Arch Test"
+ID=astraos
+ID_LIKE=arch
+VERSION="0.1-test"
+ANSI_COLOR="0;35"

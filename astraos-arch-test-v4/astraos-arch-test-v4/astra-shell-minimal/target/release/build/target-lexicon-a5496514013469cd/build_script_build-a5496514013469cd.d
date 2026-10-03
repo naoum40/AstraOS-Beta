@@ -1,0 +1,8 @@
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/build/target-lexicon-a5496514013469cd/build_script_build-a5496514013469cd.d: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/build.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/data_model.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/triple.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/targets.rs
+
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/build/target-lexicon-a5496514013469cd/build_script_build-a5496514013469cd: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/build.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/data_model.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/triple.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/targets.rs
+
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/build.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/data_model.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/triple.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/target-lexicon-0.13.5/src/targets.rs:

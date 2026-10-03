@@ -1,0 +1,61 @@
+## Base system
+base
+linux
+linux-firmware
+intel-ucode
+amd-ucode
+
+## Bootloader & ISO tools
+syslinux
+edk2-ovmf
+squashfs-tools
+archiso
+mkinitcpio-archiso
+
+## Display (Hyprland stack)
+hyprland
+greetd
+greetd-gtkgreet
+kitty
+wofi
+qt5-wayland
+qt6-wayland
+polkit-gnome
+hyprpaper
+brightnessctl
+grim
+slurp
+wl-clipboard
+pipewire
+pipewire-pulse
+wireplumber
+
+## Plymouth boot splash (logo AstraOS + spinner)
+plymouth
+gtk3
+
+## Graphics drivers (base — AMD + Intel + Vulkan, sans Nvidia pour éviter interactive pacman)
+mesa
+lib32-mesa
+vulkan-radeon
+lib32-vulkan-radeon
+vulkan-intel
+lib32-vulkan-intel
+vulkan-mesa-layers
+vulkan-swrast
+xf86-video-amdgpu
+xf86-video-intel
+xf86-video-nouveau
+libva-mesa-driver
+libva-intel-driver
+intel-media-driver
+
+## Network
+networkmanager
+
+## Astra Shell build deps
+rust
+cargo
+gtk4
+libadwaita
+pkgconf

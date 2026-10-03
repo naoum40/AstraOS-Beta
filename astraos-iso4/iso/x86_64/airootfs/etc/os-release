@@ -1,0 +1,10 @@
+NAME="AstraOS"
+PRETTY_NAME="AstraOS 0.4.0 (Live)"
+ID=astraos
+ID_LIKE=arch
+VERSION="0.4.0"
+VERSION_ID=0.4.0
+ANSI_COLOR="0;35"
+HOME_URL="https://astraos.org"
+SUPPORT_URL="https://astraos.org"
+BUG_REPORT_URL="https://github.com/naoum40/AstraOS-Beta"
