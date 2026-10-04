@@ -5,13 +5,13 @@
 [mkarchiso] WARNING: The 'uefi-x64.systemd-boot.esp' boot mode is deprecated. Use 'uefi.systemd-boot' instead.
 [mkarchiso] INFO: 'edk2-shell' is not in the package list. The ISO will not contain a bootable UEFI shell.
 [mkarchiso] INFO: Validating 'uefi-x64.systemd-boot.esp': 'memtest86+-efi' is not in the package list. Memory testing will not be available from the UEFI boot loader.
-[mkarchiso] INFO: Done!
 [mkarchiso] WARNING: The 'uefi-x64.systemd-boot.eltorito' boot mode is deprecated. Use 'uefi.systemd-boot' instead.
+[mkarchiso] INFO: Done!
 [mkarchiso] INFO: mkarchiso configuration settings
 [mkarchiso] INFO:              Architecture:   x86_64
 [mkarchiso] INFO:         Working directory:   /work
 [mkarchiso] INFO:    Installation directory:   astraos
-[mkarchiso] INFO:                Build date:   2026-10-03T14:01+0000
+[mkarchiso] INFO:                Build date:   2026-10-04T09:19+0000
 [mkarchiso] INFO:          Output directory:   /out
 [mkarchiso] INFO:        Current build mode:   iso
 [mkarchiso] INFO:               Build modes:   iso
@@ -583,9 +583,9 @@ checking for file conflicts...
 checking available disk space...
 :: Processing package changes...
 installing iana-etc...
-installing filesystem...
 warning: /work/x86_64/airootfs/etc/group installed as /work/x86_64/airootfs/etc/group.pacnew
 warning: /work/x86_64/airootfs/etc/gshadow installed as /work/x86_64/airootfs/etc/gshadow.pacnew
+installing filesystem...
 warning: /work/x86_64/airootfs/etc/hosts installed as /work/x86_64/airootfs/etc/hosts.pacnew
 warning: /work/x86_64/airootfs/etc/passwd installed as /work/x86_64/airootfs/etc/passwd.pacnew
 warning: /work/x86_64/airootfs/etc/shadow installed as /work/x86_64/airootfs/etc/shadow.pacnew
@@ -1627,3 +1627,161 @@ Creating user 'polkitd' (User for polkitd) with UID 102 and GID 102.
   -> Running build hook: [plymouth]
   -> Running build hook: [keyboard]
 ==> WARNING: Possibly missing firmware for module: 'xhci_pci_renesas'
+  -> Running build hook: [keymap]
+  -> Running build hook: [consolefont]
+==> WARNING: consolefont: no font found in configuration
+  -> Running build hook: [block]
+==> WARNING: Possibly missing firmware for module: 'wd719x'
+==> WARNING: Possibly missing firmware for module: 'bfa'
+==> WARNING: Possibly missing firmware for module: 'qla1280'
+==> WARNING: Possibly missing firmware for module: 'qla2xxx'
+==> WARNING: Possibly missing firmware for module: 'qed'
+==> WARNING: Possibly missing firmware for module: 'aic94xx'
+  -> Running build hook: [filesystems]
+  -> Running build hook: [fsck]
+==> Generating module dependencies
+==> Creating zstd-compressed initcpio image: '/boot/initramfs-linux.img'
+  -> Early uncompressed CPIO image generation successful
+==> Initcpio image generation successful
+(19/26) Updating the appstream cache...
+✔ Metadata cache was updated successfully.
+(20/26) Reloading system bus configuration...
+  Skipped: Running in chroot.
+(21/26) Updating fontconfig cache...
+(22/26) Updating GIO module cache...
+(23/26) Compiling GSettings XML schema files...
+(24/26) Probing GTK3 input method modules...
+(25/26) Updating icon theme caches...
+(26/26) Updating the desktop file MIME type cache...
+[mkarchiso] INFO: Done! Packages installed successfully.
+[mkarchiso] INFO: Creating version files...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Copying /etc/skel/* to user homes...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Copying /boot out of the airootfs...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Creating a list of installed packages on live-enviroment...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Initramfs file does not contain microcode update files. External microcode initramfs images will be copied.
+[mkarchiso] INFO: Preparing kernel and initramfs for the ISO 9660 file system...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Setting up SYSLINUX for BIOS booting...
+[mkarchiso] INFO: Done! SYSLINUX set up for BIOS booting successfully.
+[mkarchiso] INFO: Setting up systemd-boot for UEFI booting...
+[mkarchiso] INFO: Setting up systemd-boot for mixed mode booting...
+[mkarchiso] INFO: Creating FAT image of size: 241 MiB...
+mkfs.fat 4.2 (2021-01-31)
+[mkarchiso] INFO: Preparing kernel and initramfs for the FAT file system...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Done! systemd-boot set up for UEFI booting successfully.
+[mkarchiso] INFO: Cleaning up in pacstrap location...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Creating SquashFS image, this may take some time...
+Parallel mksquashfs: Using 2 processors
+Creating 4.0 filesystem on /work/iso/astraos/x86_64/airootfs.sfs, block size 1048576.
+[/                                                           ]     0/11308   0%[-                                                           ]   400/90993   0%[|                                                           ]   800/90993   0%[======|                                                     ] 10100/90993  11%[==============-                                             ] 22400/90993  24%[===============/                                            ] 23800/90993  26%[================-                                           ] 25700/90993  28%[================/                                           ] 26000/90993  28%[==================|                                         ] 27900/90993  30%[===================/                                        ] 30400/90993  33%[====================-                                       ] 31200/90993  34%[=============================\                              ] 45900/90993  50%[================================================|           ] 75300/90993  82%Unrecognised xattr prefix system.posix_acl_default
+Unrecognised xattr prefix system.posix_acl_access
+Unrecognised xattr prefix system.posix_acl_default
+
+[===========================================================\] 90993/90993 100%
+
+Exportable Squashfs 4.0 filesystem, xz compressed, data block size 1048576
+	compressed data, compressed metadata, compressed fragments,
+	compressed xattrs, compressed ids
+	duplicates are removed
+Filesystem size 1399500.28 Kbytes (1366.70 Mbytes)
+	36.79% of uncompressed filesystem size (3803544.98 Kbytes)
+Inode table size 748326 bytes (730.79 Kbytes)
+	20.29% of uncompressed inode table size (3687772 bytes)
+Directory table size 1001062 bytes (977.60 Kbytes)
+	33.19% of uncompressed directory table size (3016280 bytes)
+Xattr table size 98 bytes (0.10 Kbytes)
+	81.67% of uncompressed xattr table size (120 bytes)
+Number of duplicate files found 7595
+Number of inodes 106050
+Number of files 84490
+Number of fragments 1606
+Number of symbolic links 13824
+Number of device nodes 0
+Number of fifo nodes 0
+Number of socket nodes 0
+Number of directories 7736
+Number of hard-links 1844
+Number of ids (unique uids + gids) 11
+Number of uids 5
+	root (0)
+	unknown (1000)
+	systemd-timesync (972)
+	systemd-coredump (978)
+	systemd-resolve (973)
+Number of gids 11
+	root (0)
+	unknown (102)
+	unknown (1000)
+	ftp (11)
+	tty (5)
+	dbus (81)
+	games (50)
+	systemd-timesync (972)
+	systemd-coredump (978)
+	systemd-resolve (973)
+	users (982)
+[mkarchiso] INFO: Creating checksum file for self-test...
+[mkarchiso] INFO: Done!
+[mkarchiso] INFO: Creating ISO image...
+xorriso 1.5.8.pl02 : RockRidge filesystem manipulator, libburnia project.
+
+xorriso : NOTE : Environment variable SOURCE_DATE_EPOCH encountered with value 1791105542
+Drive current: -outdev 'stdio:/out/astraos-arch-test-0.1-test-x86_64.iso'
+Media current: stdio file, overwriteable
+Media status : is blank
+Media summary: 0 sessions, 0 data blocks, 0 data, 6751m free
+Added to ISO image: directory '/'='/work/iso'
+xorriso : UPDATE :     100 files added in 1 seconds
+xorriso : UPDATE :     100 files added in 1 seconds
+xorriso : NOTE : Copying to System Area: 432 bytes from file '/work/iso/boot/syslinux/isohdpfx.bin'
+libisofs: NOTE : Automatically adjusted MBR geometry to 1015/101/32
+libisofs: NOTE : Aligned image size to cylinder size by 343 blocks
+xorriso : UPDATE :  0.32% done
+xorriso : UPDATE :  3.42% done
+xorriso : UPDATE :  6.20% done, estimate finish Sun Oct 04 09:47:54 2026
+xorriso : UPDATE :  13.37% done, estimate finish Sun Oct 04 09:47:41 2026
+xorriso : UPDATE :  24.93% done, estimate finish Sun Oct 04 09:47:33 2026
+xorriso : UPDATE :  27.20% done, estimate finish Sun Oct 04 09:47:35 2026
+xorriso : UPDATE :  31.93% done, estimate finish Sun Oct 04 09:47:35 2026
+xorriso : UPDATE :  38.60% done, estimate finish Sun Oct 04 09:47:34 2026
+xorriso : UPDATE :  39.06% done, estimate finish Sun Oct 04 09:47:37 2026
+xorriso : UPDATE :  39.26% done, estimate finish Sun Oct 04 09:47:39 2026
+xorriso : UPDATE :  39.49% done, estimate finish Sun Oct 04 09:47:41 2026
+xorriso : UPDATE :  39.71% done, estimate finish Sun Oct 04 09:47:44 2026
+xorriso : UPDATE :  40.08% done, estimate finish Sun Oct 04 09:47:46 2026
+xorriso : UPDATE :  40.62% done, estimate finish Sun Oct 04 09:47:47 2026
+xorriso : UPDATE :  40.89% done, estimate finish Sun Oct 04 09:47:50 2026
+xorriso : UPDATE :  41.14% done, estimate finish Sun Oct 04 09:47:51 2026
+xorriso : UPDATE :  44.54% done, estimate finish Sun Oct 04 09:47:51 2026
+xorriso : UPDATE :  52.07% done, estimate finish Sun Oct 04 09:47:47 2026
+xorriso : UPDATE :  57.06% done, estimate finish Sun Oct 04 09:47:46 2026
+xorriso : UPDATE :  57.24% done, estimate finish Sun Oct 04 09:47:49 2026
+xorriso : UPDATE :  57.50% done, estimate finish Sun Oct 04 09:47:50 2026
+xorriso : UPDATE :  57.71% done, estimate finish Sun Oct 04 09:47:51 2026
+xorriso : UPDATE :  62.30% done, estimate finish Sun Oct 04 09:47:51 2026
+xorriso : UPDATE :  70.97% done, estimate finish Sun Oct 04 09:47:47 2026
+xorriso : UPDATE :  78.69% done, estimate finish Sun Oct 04 09:47:45 2026
+xorriso : UPDATE :  83.90% done, estimate finish Sun Oct 04 09:47:44 2026
+xorriso : UPDATE :  89.75% done, estimate finish Sun Oct 04 09:47:43 2026
+xorriso : UPDATE :  95.76% done
+xorriso : UPDATE :  96.64% done
+xorriso : UPDATE :  97.08% done
+xorriso : UPDATE :  97.35% done
+xorriso : UPDATE :  97.57% done
+xorriso : UPDATE :  97.78% done
+xorriso : UPDATE :  98.06% done
+xorriso : UPDATE :  98.39% done
+xorriso : UPDATE :  98.63% done
+xorriso : UPDATE :  98.84% done
+ISO image produced: 943528 sectors
+Written to medium : 943528 sectors at LBA 0
+Writing to 'stdio:/out/astraos-arch-test-0.1-test-x86_64.iso' completed successfully.
+
+[mkarchiso] INFO: Done!
+1.8G	/out/astraos-arch-test-0.1-test-x86_64.iso

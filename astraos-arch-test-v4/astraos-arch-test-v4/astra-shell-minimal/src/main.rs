@@ -1,8 +1,8 @@
 use gtk4::prelude::*;
 use gtk4::gdk;
 use gtk4::{
-    Application, ApplicationWindow, Box as GtkBox, Button, CssProvider, Label,
-    MenuButton, Popover, Orientation,
+    Application, ApplicationWindow, Button, CenterBox, CssProvider, Label,
+    Box as GtkBox, Orientation,
     style_context_add_provider_for_display,
 };
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -16,59 +16,49 @@ fn main() {
         .build();
 
     app.connect_activate(|app| {
+        // Barre pleine largeur, ancrée en bas — style Windows 11 :
+        // icônes de lancement groupées et centrées, horloge calée à droite.
         let css = r#"
-            window { background-color: #0b0d17; }
-            .bar {
-                background-color: rgba(22, 25, 40, 0.85);
-                border-top: 1px solid rgba(129, 140, 248, 0.12);
-                padding: 4px 12px;
+            window { background-color: transparent; }
+            .taskbar {
+                background-color: rgba(20, 22, 34, 0.78);
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+                padding: 0 10px;
             }
-            .start-btn {
-                color: #818cf8;
-                font-family: 'Outfit', 'Segoe UI', sans-serif;
-                font-size: 18px;
-                font-weight: 700;
+            .taskbar-center {
+                padding: 0 4px;
+            }
+            .taskbar-btn {
                 background: transparent;
                 border: none;
-                padding: 6px 12px;
-                border-radius: 6px;
-                min-width: 40px;
-            }
-            .start-btn:hover { background: rgba(129, 140, 248, 0.15); }
-            .dock-btn {
-                background: transparent;
-                border: none;
-                padding: 6px;
-                border-radius: 6px;
+                padding: 8px;
+                border-radius: 8px;
                 color: #f1f5f9;
-                min-width: 36px;
-                min-height: 36px;
+                min-width: 40px;
+                min-height: 40px;
             }
-            .dock-btn:hover { background: rgba(255, 255, 255, 0.1); }
+            .taskbar-btn:hover {
+                background: rgba(255, 255, 255, 0.10);
+            }
+            .taskbar-btn:active {
+                background: rgba(255, 255, 255, 0.16);
+            }
+            .star-btn {
+                color: #818cf8;
+                font-size: 17px;
+                font-weight: 700;
+            }
             .clock {
                 font-family: 'JetBrains Mono', 'Consolas', monospace;
-                font-size: 13px;
+                font-size: 12px;
                 font-weight: 500;
                 color: #f1f5f9;
-                padding: 6px 12px;
-            }
-            popover contents {
-                background-color: rgba(20, 22, 35, 0.95);
-                border-radius: 12px;
-                padding: 12px;
-                color: #f1f5f9;
-            }
-            .popover-btn {
-                background: transparent;
-                color: #f1f5f9;
-                border: none;
-                padding: 8px 12px;
+                padding: 4px 14px;
                 border-radius: 6px;
-                font-size: 13px;
-                min-width: 140px;
             }
-            .popover-btn:hover { background: rgba(129, 140, 248, 0.2); }
-            .popover-power { color: #ef4444; }
+            .clock:hover {
+                background: rgba(255, 255, 255, 0.08);
+            }
         "#;
 
         let provider = CssProvider::new();
@@ -84,103 +74,66 @@ fn main() {
 
         let window = ApplicationWindow::builder()
             .application(app)
-            .title("AstraOS Shell")
+            .title("AstraOS Taskbar")
             .default_width(1920)
-            .default_height(40)
+            .default_height(48)
             .decorated(false)
             .build();
 
-        let bar = GtkBox::builder()
+        // CenterBox = layout à 3 zones (gauche / centre / droite), comme la
+        // vraie barre des tâches Windows 11 : le centre reste parfaitement
+        // centré quel que soit ce qu'il y a à droite (horloge, tray, etc.)
+        let taskbar = CenterBox::builder()
             .orientation(Orientation::Horizontal)
-            .spacing(0)
-            .css_classes(["bar"])
+            .css_classes(["taskbar"])
             .hexpand(true)
             .vexpand(true)
             .build();
 
-        let center_box = GtkBox::builder()
+        // -- Zone centrale : étoile (placeholder du futur menu démarrer) + apps épinglées --
+        let center_group = GtkBox::builder()
             .orientation(Orientation::Horizontal)
-            .spacing(4)
-            .halign(gtk4::Align::Center)
-            .hexpand(true)
-            .build();
-
-        let start_btn = MenuButton::builder()
-            .label("✦")
-            .css_classes(["start-btn"])
-            .build();
-
-        let popover_content = GtkBox::builder()
-            .orientation(Orientation::Vertical)
             .spacing(2)
+            .css_classes(["taskbar-center"])
             .build();
 
-        let menu_apps = [
-            ("Firefox", "applications-internet", "firefox"),
-            ("Terminal", "utilities-terminal", "kitty"),
-            ("Files", "folder", "thunar"),
-        ];
-
-        for (label, _icon_name, command) in menu_apps.iter() {
-            let btn = Button::builder()
-                .label(*label)
-                .css_classes(["popover-btn"])
-                .build();
-            let cmd = command.to_string();
-            btn.connect_clicked(move |_| {
-                let _ = Command::new(&cmd).spawn();
-            });
-            popover_content.append(&btn);
-        }
-
-        let sep = GtkBox::builder()
-            .height_request(1)
-            .css_classes(["separator"])
+        let star_btn = Button::builder()
+            .label("✦")
+            .css_classes(["taskbar-btn", "star-btn"])
+            .tooltip_text("AstraOS (menu démarrer à venir)")
             .build();
-        popover_content.append(&sep);
-
-        let power_btn = Button::builder()
-            .label("⏻ Power")
-            .css_classes(["popover-btn", "popover-power"])
-            .build();
-        power_btn.connect_clicked(|_| {
-            let _ = Command::new("systemctl").arg("poweroff").spawn();
-        });
-        popover_content.append(&power_btn);
-
-        let popover = Popover::new();
-        popover.set_child(Some(&popover_content));
-        start_btn.set_popover(Some(&popover));
-
-        center_box.append(&start_btn);
+        // Pas de menu pour l'instant — l'étoile ne fait rien au clic.
+        center_group.append(&star_btn);
 
         let pinned_apps = [
             ("Firefox", "applications-internet", "firefox"),
             ("Terminal", "utilities-terminal", "kitty"),
-            ("Files", "folder", "thunar"),
+            ("Fichiers", "folder", "thunar"),
         ];
 
         for (label, icon_name, command) in pinned_apps.iter() {
             let btn = Button::builder()
                 .icon_name(*icon_name)
                 .tooltip_text(*label)
-                .css_classes(["dock-btn"])
+                .css_classes(["taskbar-btn"])
                 .build();
             let cmd = command.to_string();
             btn.connect_clicked(move |_| {
                 let _ = Command::new(&cmd).spawn();
             });
-            center_box.append(&btn);
+            center_group.append(&btn);
         }
 
-        bar.append(&center_box);
+        taskbar.set_center_widget(Some(&center_group));
 
+        // -- Zone droite : horloge, façon tray système Windows 11 --
         let clock = Label::builder()
             .label("00:00")
             .css_classes(["clock"])
             .halign(gtk4::Align::End)
+            .valign(gtk4::Align::Center)
             .build();
-        bar.append(&clock);
+        taskbar.set_end_widget(Some(&clock));
 
         let clock_clone = clock.clone();
         update_clock(&clock_clone);
@@ -192,7 +145,7 @@ fn main() {
             },
         );
 
-        window.set_child(Some(&bar));
+        window.set_child(Some(&taskbar));
         window.present();
     });
 
