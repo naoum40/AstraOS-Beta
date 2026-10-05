@@ -1,0 +1,4 @@
+taskbar_mode = "win"
+accent_color = "#818cf8"
+glassmorphism = true
+wallpaper = "/usr/share/backgrounds/astraos/default-violet.png"

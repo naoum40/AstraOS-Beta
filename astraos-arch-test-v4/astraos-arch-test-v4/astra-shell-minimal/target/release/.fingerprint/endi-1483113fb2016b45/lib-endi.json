@@ -1,0 +1,1 @@
+{"rustc":5244445300240561903,"features":"[\"default\", \"std\"]","declared_features":"[\"default\", \"std\"]","target":15610954374813923373,"profile":854319013279132213,"path":7628663890163422682,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/endi-1483113fb2016b45/dep-lib-endi","checksum":false}}],"rustflags":[],"config":9396254390672932401,"compile_kind":0}

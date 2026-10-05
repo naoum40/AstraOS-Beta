@@ -1,0 +1,10 @@
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/zvariant_derive-91d63024b8089169.d: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/dict.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/type.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/utils.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/value.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/../README.md
+
+/workspaces/AstraOS-Beta/astraos-arch-test-v4/astraos-arch-test-v4/astra-shell-minimal/target/release/deps/libzvariant_derive-91d63024b8089169.so: /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/lib.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/dict.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/type.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/utils.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/value.rs /home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/../README.md
+
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/lib.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/dict.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/type.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/utils.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/value.rs:
+/home/codespace/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zvariant_derive-4.2.0/src/../README.md:
