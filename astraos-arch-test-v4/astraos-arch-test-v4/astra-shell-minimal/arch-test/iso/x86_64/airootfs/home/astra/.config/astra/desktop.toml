@@ -1,0 +1,2 @@
+# AstraOS Desktop Config
+taskbar_mode = "windows"  # "windows" (barre en bas) ou "mac" (dock)

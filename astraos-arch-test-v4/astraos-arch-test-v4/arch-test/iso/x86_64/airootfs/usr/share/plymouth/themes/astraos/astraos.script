@@ -1,41 +1,42 @@
-# AstraOS Plymouth theme — logo + spinner animé
-# Affiche le logo AstraOS au centre + 8 points qui tournent en bas
+# AstraOS Plymouth theme - logo + barre de progression style Apple
 
-# Fond dégradé violet sombre (#0b0d17 → #1a1033)
+# Fond noir pur
 Window.SetBackgroundTopColor(0.0, 0.0, 0.0);
 Window.SetBackgroundBottomColor(0.0, 0.0, 0.0);
 
-# ─── Logo AstraOS ───────────────────────────────────────────────────
+# Logo AstraOS (35% hauteur)
 logo_image = Image("logo.png");
 logo_sprite = Sprite(logo_image);
 logo_sprite.SetX(Window.GetWidth() / 2 - logo_image.GetWidth() / 2);
-logo_sprite.SetY(Window.GetHeight() * 0.25 - logo_image.GetHeight() / 2);
+logo_sprite.SetY(Window.GetHeight() * 0.35 - logo_image.GetHeight() / 2);
 
-# ─── Spinner : 8 points qui tournent ────────────────────────────────
-spinner_count = 8;
-spinner_radius = 35;
-spinner_angle = 0;
-spinner_sprites = [];
+# Barre de progression (style Apple, 55% hauteur)
+bar_width = 200;
+bar_height = 4;
+bar_x = Window.GetWidth() / 2 - bar_width / 2;
+bar_y = Window.GetHeight() * 0.55;
 
-# Créer 8 petits cercles (dot.png — image PNG petite taille)
-for (i = 0; i < spinner_count; i++) {
-    dot_image = Image("dot.png");
-    sprite = Sprite(dot_image);
-    # Opacité décroissante pour effet trail
-    opacity = 1.0 - (i * 0.1);
-    sprite.SetOpacity(opacity);
-    spinner_sprites += [sprite];
-}
+# Barre de fond (gris fonce)
+bar_bg_image = Image.New(bar_width, bar_height);
+bar_bg_image.Fill(0.15, 0.15, 0.15, 1.0);
+bar_bg_sprite = Sprite(bar_bg_image);
+bar_bg_sprite.SetX(bar_x);
+bar_bg_sprite.SetY(bar_y);
 
-# ─── Animation callback ─────────────────────────────────────────────
+# Barre de progression (blanc, qui se remplit)
+progress = 0.0;
+progress_bar_sprite = Sprite();
+progress_bar_sprite.SetX(bar_x);
+progress_bar_sprite.SetY(bar_y);
+
 fun on_tick(delta) {
-    spinner_angle += delta * 0.005;
-    for (i = 0; i < spinner_count; i++) {
-        a = spinner_angle + i * (Math.Pi * 2 / spinner_count);
-        x = Window.GetWidth() / 2 + spinner_radius * Math.Cos(a) - 4;
-        y = Window.GetHeight() * 0.75 + spinner_radius * Math.Sin(a) - 4;
-        spinner_sprites[i].SetX(x);
-        spinner_sprites[i].SetY(y);
+    if (progress < 1.0) {
+        progress += delta * 0.05;
+        if (progress > 1.0) progress = 1.0;
+        new_width = (bar_width * progress) + 1;
+        new_bar = Image.New(new_width, bar_height);
+        new_bar.Fill(1.0, 1.0, 1.0, 1.0);
+        progress_bar_sprite.SetImage(new_bar);
     }
 }
 

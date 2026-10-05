@@ -1,162 +1,76 @@
-use gtk4::prelude::*;
-use gtk4::gdk;
-use gtk4::{
-    Application, ApplicationWindow, Button, CenterBox, CssProvider, Label,
-    Box as GtkBox, Orientation,
-    style_context_add_provider_for_display,
-};
-use std::time::{SystemTime, UNIX_EPOCH};
-use std::process::Command;
+// main.rs - Astra Shell entry point.
+//
+// Boots the AstraOS desktop shell on top of Hyprland (Wayland). Owns the
+// GTK4 `Application` and orchestrates the bar / dock / launcher plus the
+// Hyprland IPC event listener.
+//
+// Pipeline:
+//   1. `env_logger::init()` - stderr logging (RUST_LOG=info).
+//   2. `gtk4::init()` - must run on the GTK main thread.
+//   3. Build the `Application` (GApplication ID `org.astraos.Shell`).
+//   4. On activate: load CSS theme, load user config, start the Hyprland
+//      IPC listener, build EITHER the bar (Windows mode) OR the dock
+//      (Mac mode), then build the hidden launcher.
 
-const APP_ID: &str = "org.astraos.ShellMinimal";
+mod bar;
+mod config;
+mod dock;
+mod hyprland_ipc;
+mod launcher;
+mod screens;
+mod theme;
+
+use gtk4::prelude::*;
+use gtk4::Application;
+
+/// GApplication ID - registered with the GNOME session manager.
+const APP_ID: &str = "org.astraos.Shell";
 
 fn main() {
+    env_logger::init();
+    log::info!("AstraOS Shell v0.2.0 starting...");
+
+    gtk4::init().expect("Failed to initialize GTK");
+
     let app = Application::builder()
         .application_id(APP_ID)
+        .flags(gio::ApplicationFlags::FLAGS_NONE)
         .build();
 
     app.connect_activate(|app| {
-        // Barre pleine largeur, ancrée en bas — style Windows 11 :
-        // icônes de lancement groupées et centrées, horloge calée à droite.
-        let css = r#"
-            window { background-color: transparent; }
-            .taskbar {
-                background-color: rgba(20, 22, 34, 0.78);
-                border-top: 1px solid rgba(255, 255, 255, 0.06);
-                padding: 0 10px;
-            }
-            .taskbar-center {
-                padding: 0 4px;
-            }
-            .taskbar-btn {
-                background: transparent;
-                border: none;
-                padding: 8px;
-                border-radius: 8px;
-                color: #f1f5f9;
-                min-width: 40px;
-                min-height: 40px;
-            }
-            .taskbar-btn:hover {
-                background: rgba(255, 255, 255, 0.10);
-            }
-            .taskbar-btn:active {
-                background: rgba(255, 255, 255, 0.16);
-            }
-            .star-btn {
-                color: #818cf8;
-                font-size: 17px;
-                font-weight: 700;
-            }
-            .clock {
-                font-family: 'JetBrains Mono', 'Consolas', monospace;
-                font-size: 12px;
-                font-weight: 500;
-                color: #f1f5f9;
-                padding: 4px 14px;
-                border-radius: 6px;
-            }
-            .clock:hover {
-                background: rgba(255, 255, 255, 0.08);
-            }
-        "#;
+        // 1. Load CSS theme (glassmorphism) onto the default display.
+        theme::load_theme();
 
-        let provider = CssProvider::new();
-        provider.load_from_data(css);
-        let display = gdk::Display::default();
-        if let Some(d) = display {
-            style_context_add_provider_for_display(
-                &d,
-                &provider,
-                gtk4::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
+        // 2. Load user config from ~/.config/astra/desktop.toml
+        //    (falls back to a sensible AstraOS default if missing).
+        let cfg = config::ShellConfig::load();
+        log::info!("Config: {:?}", cfg);
+
+        // 3. Connect to Hyprland's event socket (.socket2.sock) and start
+        //    the async event listener. The listener runs on its own
+        //    dedicated OS thread with a private Tokio runtime so the
+        //    GTK main thread is never blocked.
+        let hyprland = hyprland_ipc::HyprlandClient::new();
+        hyprland.connect_signals();
+
+        // 4. Build EITHER the bar (Windows mode) OR the dock (Mac mode),
+        //    never both. The unused surface is skipped entirely.
+        if cfg.taskbar_mode == "mac" {
+            dock::Dock::new(app, &cfg, &hyprland).present();
+        } else {
+            bar::Bar::new(app, &cfg, &hyprland).present();
         }
 
-        let window = ApplicationWindow::builder()
-            .application(app)
-            .title("AstraOS Taskbar")
-            .default_width(1920)
-            .default_height(48)
-            .decorated(false)
-            .build();
+        // 5. Build the launcher (hidden by default). Toggled later via
+        //    the Super key / D-Bus shortcut (task 2-b). Holding the
+        //    launcher in a local binding keeps the GTK window alive for
+        //    the lifetime of the activate closure - GTK ref-counts the
+        //    underlying GObject, so dropping the Rust wrapper is safe.
+        let _launcher = launcher::Launcher::new(app, &cfg);
 
-        // CenterBox = layout à 3 zones (gauche / centre / droite), comme la
-        // vraie barre des tâches Windows 11 : le centre reste parfaitement
-        // centré quel que soit ce qu'il y a à droite (horloge, tray, etc.)
-        let taskbar = CenterBox::builder()
-            .orientation(Orientation::Horizontal)
-            .css_classes(["taskbar"])
-            .hexpand(true)
-            .vexpand(true)
-            .build();
-
-        // -- Zone centrale : étoile (placeholder du futur menu démarrer) + apps épinglées --
-        let center_group = GtkBox::builder()
-            .orientation(Orientation::Horizontal)
-            .spacing(2)
-            .css_classes(["taskbar-center"])
-            .build();
-
-        let star_btn = Button::builder()
-            .label("✦")
-            .css_classes(["taskbar-btn", "star-btn"])
-            .tooltip_text("AstraOS (menu démarrer à venir)")
-            .build();
-        // Pas de menu pour l'instant — l'étoile ne fait rien au clic.
-        center_group.append(&star_btn);
-
-        let pinned_apps = [
-            ("Firefox", "applications-internet", "firefox"),
-            ("Terminal", "utilities-terminal", "kitty"),
-            ("Fichiers", "folder", "thunar"),
-        ];
-
-        for (label, icon_name, command) in pinned_apps.iter() {
-            let btn = Button::builder()
-                .icon_name(*icon_name)
-                .tooltip_text(*label)
-                .css_classes(["taskbar-btn"])
-                .build();
-            let cmd = command.to_string();
-            btn.connect_clicked(move |_| {
-                let _ = Command::new(&cmd).spawn();
-            });
-            center_group.append(&btn);
-        }
-
-        taskbar.set_center_widget(Some(&center_group));
-
-        // -- Zone droite : horloge, façon tray système Windows 11 --
-        let clock = Label::builder()
-            .label("00:00")
-            .css_classes(["clock"])
-            .halign(gtk4::Align::End)
-            .valign(gtk4::Align::Center)
-            .build();
-        taskbar.set_end_widget(Some(&clock));
-
-        let clock_clone = clock.clone();
-        update_clock(&clock_clone);
-        glib::timeout_add_local(
-            std::time::Duration::from_secs(1),
-            move || {
-                update_clock(&clock_clone);
-                glib::ControlFlow::Continue
-            },
-        );
-
-        window.set_child(Some(&taskbar));
-        window.present();
+        log::info!("Astra Shell ready");
     });
 
+    // Blocks here until the shell exits (process teardown).
     app.run();
-}
-
-fn update_clock(label: &Label) {
-    if let Ok(dur) = SystemTime::now().duration_since(UNIX_EPOCH) {
-        let secs = dur.as_secs();
-        let h = (secs / 3600 + 1) % 24;
-        let m = (secs / 60) % 60;
-        label.set_label(&format!("{:02}:{:02}", h, m));
-    }
 }
