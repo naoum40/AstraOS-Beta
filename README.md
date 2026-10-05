@@ -210,7 +210,9 @@ astraos/
 
 ---
 
-## 🚀 Installation & Build (non conseiller attendre la v1)
+## 🚀 Installation & Build 
+
+❌ **Je ne vous conseille pas car je travaille dessus pour rendre la v0.4.0 utilisable des maintenant**
 
 ### Prérequis
 
