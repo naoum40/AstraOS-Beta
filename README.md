@@ -44,10 +44,10 @@ Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS pos
 | Astra Shell (barre, dock, launcher, lock screen) | Rust + GTK4-rs | ✅ OK | ISO 2 |
 | Welcome screen (typing animation) | Rust + GTK4-rs | ✅ OK | ISO 2 |
 | Apps système |Rust| ✅ OK | ISO 3 |
-| **AstraPass** (AES-GCM 256)| Rust + GTK4-rs | **🔜 En Cours**| ISO 4 |
-| Widgets desktop | Rust + GTK4-rs | **🔜 En Cours**| ISO 4 |
-| Sticky Notes | Rust + GTK4-rs | 🔜 | ISO 4 |
-| Jeux (Démineur, Morpion, Snake) | Rust + GTK4-rs | 🔜 | ISO 4 |
+| **AstraPass** (AES-GCM 256)| Rust + GTK4-rs | **🔜 En Cours** | ISO 4 |
+| Widgets desktop | Rust + GTK4-rs | **🔜 En Cours** | ISO 4 |
+| Sticky Notes | Rust + GTK4-rs | **🔜 En Cours** | ISO 4 |
+| Jeux (Démineur, Morpion, Snake) | Rust + GTK4-rs | **🔜 En Cours** | ISO 4 |
 | Astra Defender (antivirus) | Rust + GTK4-rs | 🔜 | ISO 5 |
 | Task Manager | Rust + GTK4-rs | 🔜 | ISO 5 |
 | Astra Assistant (chatbot IA opt-in) | Rust + GTK4-rs | 🔜 | ISO 6 |
