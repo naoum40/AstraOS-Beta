@@ -212,7 +212,7 @@ astraos/
 
 ## 🚀 Installation & Build 
 
-❌ **Je ne vous conseille pas car je travaille dessus pour rendre la v0.4.0 utilisable des maintenant**
+❌ **Je ne vous conseille pas car sa marche pas et je travaille dessus pour rendre la v0.4.0 utilisable des maintenant**
 
 ### Prérequis
 
