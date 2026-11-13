@@ -1,0 +1,19 @@
+[package]
+name = "astra-dock"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "astra_dock"
+path = "src/lib.rs"
+
+[[bin]]
+name = "astra-dock"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = "0.8"
+glib = "0.19"
+gio = "0.19"
+gtk4-layer-shell = "0.3"
+graphene-rs = "0.19"
