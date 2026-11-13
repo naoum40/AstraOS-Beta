@@ -21,7 +21,7 @@ Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS pos
 
 ### 🎯 Objectifs
 
-- 🚀 **Performance maximale** — ~450-750 Mo de RAM au boot (vs 3-5 Go pour Windows 11)
+- 🚀 **Performance maximale** — ~1.5-2 Go de RAM au boot (vs 5 Go pour Windows 11)
 - 🎨 **Glassmorphism natif** — Transparence, blur, animations fluides
 - 🛡️ **Indépendance totale** — UI AstraOS propriétaire + backends agnostiques
 - 🇫🇷 **Grand public francophone** — Locale FR par défaut, multi-langue à venir
@@ -115,10 +115,10 @@ Inspiré par la stratégie Apple Silicon (verticalisation du stack), AstraOS pos
 | Comme Windows/macOS | ✅ (Swift/C# equiv) | ❌ | ❌ |
 
 **Comparaison RAM au boot** :
-- Windows 11 : 3-5 Go
-- Ubuntu (GNOME/JS) : 1.2-1.5 Go
+- Windows 11 : 5 Go
+- Ubuntu (GNOME/JS) : 2.5 Go
 - macOS Sonoma (Swift/ARC) : 2-3 Go
-- **AstraOS (Rust)** : **~450-750 Mo** ✅ le plus économe
+- **AstraOS** : **~1.5 Go** ✅ le plus économe
 
 ---
 
@@ -132,9 +132,8 @@ AstraOS proposera plusieurs ISO packs selon l'usage :
 | **Developer** 🖥️ | Développeurs | Core + VSCodium + Dragon Code + Docker + Git + Rust toolchain |
 | **Bureautique** 🏢 | Grand public pro | Core + LibreOffice (rien d'autre) |
 | **Gaming** 🎮 | Gamers (phase 3+) | Core + Astra Gaming Launcher + WinVmX + Waydroid|
+| **Illustrateur** 🎨 | Créatifs / Design | Core + A définir |
 | **Ultra** 🌟 | Ultra | Core + Developer + Bureautique + Gaming|
-
-
 
 Si vous êtes presser de tester voici la commande 
 Build command : `make build-iso pack=core` (ou `developer`, `bureautique`, `gaming`)
